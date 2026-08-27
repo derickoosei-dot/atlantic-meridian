@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Atlantic Meridian</title>
+  <meta name="description" content="Atlantic Meridian LLC — Ghana to United States commerce." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0e1621;
+      --panel: #152233;
+      --ink: #e8eef6;
+      --muted: #9aabc0;
+      --gold: #c6a15b;
+      --line: #2a3b52;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: "IBM Plex Sans", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    header {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 28px 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .mark {
+      font-family: "IBM Plex Serif", Georgia, serif;
+      font-size: 18px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      margin-left: 18px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    nav a:hover { color: var(--ink); }
+    main { max-width: 960px; margin: 0 auto; padding: 56px 24px 88px; }
+    .rule { height: 1px; background: var(--gold); width: 56px; margin-bottom: 28px; }
+    h1 {
+      font-family: "IBM Plex Serif", Georgia, serif;
+      font-size: clamp(36px, 6vw, 58px);
+      font-weight: 500;
+      line-height: 1.12;
+      margin: 0 0 18px;
+      max-width: 16ch;
+    }
+    .lede {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 46ch;
+      margin-bottom: 36px;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--gold);
+      color: #101820;
+      text-decoration: none;
+      padding: 12px 18px;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.04em;
+    }
+    .btn.ghost {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      margin-left: 8px;
+    }
+    section { margin-top: 72px; }
+    h2 {
+      font-family: "IBM Plex Serif", Georgia, serif;
+      font-size: 22px;
+      color: var(--gold);
+      margin: 0 0 14px;
+      font-weight: 500;
+    }
+    p { color: var(--muted); max-width: 62ch; }
+    .split {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      margin-top: 24px;
+    }
+    .split div {
+      background: var(--panel);
+      padding: 24px;
+    }
+    .split strong { display: block; color: var(--ink); margin-bottom: 8px; }
+    address { font-style: normal; color: var(--ink); }
+    footer {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 24px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      border-top: 1px solid var(--line);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="mark">Atlantic Meridian</div>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <div class="rule"></div>
+    <h1>Ghana to the United States. Commerce, done clean.</h1>
+    <p class="lede">Atlantic Meridian LLC is a Nevada company built for cross-border trade between Ghana and the United States. Direct counterparts. Clear paper. No theater.</p>
+    <a class="btn" href="tel:+17028999387">702-899-9387</a>
+    <a class="btn ghost" href="mailto:derick.o.osei@gmail.com">Email</a>
+
+    <section id="work">
+      <h2>What we do</h2>
+      <p>We sit between operators on both sides of the Atlantic who need a US entity, a responsible party, and a clean path for goods, introductions, and commercial work. We do not pretend to be a bank, a mine, or a government office.</p>
+      <div class="split">
+        <div>
+          <strong>United States</strong>
+          Nevada LLC, Las Vegas office of record, US counterpart for Ghana-based principals.
+        </div>
+        <div>
+          <strong>Ghana</strong>
+          Trade and commercial relationships into West Africa. Introductions only when they are real.
+        </div>
+        <div>
+          <strong>Paper</strong>
+          Named counterparties. Written terms. No “trust me” side deals on this letterhead.
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <address>
+        Atlantic Meridian LLC<br />
+        3753 Howard Hughes Parkway, Suite 200<br />
+        Las Vegas, NV 89169<br />
+        <a href="tel:+17028999387" style="color:#c6a15b">702-899-9387</a><br />
+        <a href="mailto:derick.o.osei@gmail.com" style="color:#c6a15b">derick.o.osei@gmail.com</a>
+      </address>
+    </section>
+  </main>
+  <footer>
+    ATLANTIC MERIDIAN LLC · NEVADA · UNITED STATES
+  </footer>
+</body>
+</html>
