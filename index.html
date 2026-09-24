@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Atlantic Meridian | Cybersecurity &amp; AI Consulting</title>
-  <meta name="description" content="Atlantic Meridian LLC — Nevada cybersecurity and AI consulting for federal and commercial clients. RMF/ATO, SOC, cloud security, and assessments." />
+  <title>Atlantic Meridian | Federal Cybersecurity &amp; AI Consulting</title>
+  <meta name="description" content="Atlantic Meridian LLC — Nevada small business cybersecurity and AI consulting for federal agencies and primes. RMF/ATO, SOC, IAM/PAM, cloud security. SAM entity registration in progress." />
   <meta name="theme-color" content="#0e1621" />
+  <link rel="canonical" href="https://atlanticmeridianco.com/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap" rel="stylesheet" />
@@ -20,18 +21,37 @@
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    html, body { margin: 0; padding: 0; }
     body {
+      margin: 0;
       font-family: "IBM Plex Sans", system-ui, sans-serif;
       background: var(--bg);
       color: var(--ink);
       line-height: 1.6;
     }
     a { color: var(--gold); }
-    header {
-      max-width: 960px;
+    .strip {
+      background: #0a1018;
+      border-bottom: 1px solid var(--line);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+    .strip-inner, header, main, footer, .band-inner {
+      max-width: 1040px;
       margin: 0 auto;
-      padding: 28px 24px 0;
+      padding: 10px 24px;
+    }
+    .strip-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      justify-content: space-between;
+    }
+    .strip strong { color: var(--ink); font-weight: 600; }
+    header {
+      padding-top: 22px;
+      padding-bottom: 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -40,7 +60,7 @@
     }
     .mark {
       font-family: "IBM Plex Serif", Georgia, serif;
-      font-size: 18px;
+      font-size: 17px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--gold);
@@ -49,30 +69,29 @@
     nav a {
       color: var(--muted);
       text-decoration: none;
-      font-size: 13px;
-      margin-left: 18px;
-      letter-spacing: 0.04em;
+      font-size: 12px;
+      margin-left: 16px;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
     }
-    nav a:first-child { margin-left: 0; }
     nav a:hover { color: var(--ink); }
-    main { max-width: 960px; margin: 0 auto; padding: 56px 24px 88px; }
-    .rule { height: 1px; background: var(--gold); width: 56px; margin-bottom: 28px; }
+    main { padding: 48px 24px 96px; }
+    .rule { height: 1px; background: var(--gold); width: 56px; margin-bottom: 24px; }
     h1 {
       font-family: "IBM Plex Serif", Georgia, serif;
-      font-size: clamp(34px, 5.5vw, 54px);
+      font-size: clamp(32px, 5vw, 50px);
       font-weight: 500;
       line-height: 1.12;
-      margin: 0 0 18px;
+      margin: 0 0 16px;
       max-width: 18ch;
     }
     .lede {
       color: var(--muted);
-      font-size: 18px;
-      max-width: 52ch;
-      margin-bottom: 36px;
+      font-size: 17px;
+      max-width: 58ch;
+      margin: 0 0 28px;
     }
-    .actions { display: flex; flex-wrap: wrap; gap: 8px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
     .btn {
       display: inline-block;
       background: var(--gold);
@@ -81,131 +100,263 @@
       padding: 12px 18px;
       font-weight: 600;
       font-size: 14px;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.03em;
     }
     .btn.ghost {
       background: transparent;
       color: var(--ink);
       border: 1px solid var(--line);
     }
-    .btn:hover { filter: brightness(1.05); }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .meta span, .chip {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 7px 11px;
+      font-size: 12px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
     section { margin-top: 72px; }
     h2 {
       font-family: "IBM Plex Serif", Georgia, serif;
       font-size: 22px;
       color: var(--gold);
-      margin: 0 0 14px;
+      margin: 0 0 12px;
       font-weight: 500;
     }
-    p { color: var(--muted); max-width: 62ch; }
-    .split {
+    h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    p { color: var(--muted); max-width: 68ch; }
+    .note {
+      border-left: 2px solid var(--gold);
+      padding: 12px 16px;
+      background: var(--panel);
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 70ch;
+    }
+    .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 1px;
       background: var(--line);
       border: 1px solid var(--line);
-      margin-top: 24px;
+      margin-top: 22px;
     }
-    .split div {
+    .grid article {
       background: var(--panel);
-      padding: 24px;
+      padding: 22px;
       color: var(--muted);
-      font-size: 15px;
+      font-size: 14.5px;
     }
-    .split strong {
+    .grid .tag {
       display: block;
-      color: var(--ink);
-      margin-bottom: 8px;
-      font-weight: 600;
-    }
-    .meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 18px;
-      margin-top: 28px;
-      color: var(--muted);
-      font-size: 13px;
-      letter-spacing: 0.03em;
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
+      margin-bottom: 8px;
     }
-    .meta span {
+    .data {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .data div {
       border: 1px solid var(--line);
-      padding: 8px 12px;
       background: var(--panel);
+      padding: 16px;
     }
-    address { font-style: normal; color: var(--ink); line-height: 1.8; }
+    .data dt {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .data dd {
+      margin: 0;
+      color: var(--ink);
+      font-weight: 600;
+      font-size: 14px;
+    }
+    ul.clean {
+      margin: 12px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    ul.clean li { margin-bottom: 6px; }
+    address { font-style: normal; color: var(--ink); line-height: 1.85; }
     address a { text-decoration: none; }
-    address a:hover { text-decoration: underline; }
     footer {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 24px;
+      border-top: 1px solid var(--line);
       color: var(--muted);
       font-size: 12px;
       letter-spacing: 0.04em;
-      border-top: 1px solid var(--line);
       display: flex;
       justify-content: space-between;
       gap: 12px;
       flex-wrap: wrap;
+      padding: 22px 24px 36px;
+      max-width: 1040px;
+      margin: 0 auto;
     }
-    @media (max-width: 520px) {
-      nav a { margin-left: 12px; font-size: 12px; }
+    @media (max-width: 560px) {
+      nav a { margin-left: 10px; }
       h1 { max-width: none; }
     }
   </style>
 </head>
 <body>
+  <div class="strip">
+    <div class="strip-inner">
+      <span><strong>NAICS</strong> 541512 · 541519 · 541511</span>
+      <span><strong>Size</strong> Small Business</span>
+      <span><strong>HQ</strong> Las Vegas, NV</span>
+      <span><strong>SAM</strong> Entity validation in progress</span>
+    </div>
+  </div>
+
   <header>
     <a class="mark" href="#">Atlantic Meridian</a>
     <nav>
       <a href="#services">Services</a>
-      <a href="#about">About</a>
+      <a href="#why">Why us</a>
+      <a href="#company">Company</a>
+      <a href="#capability">Capability</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
+
   <main>
     <div class="rule"></div>
-    <h1>Cybersecurity and AI consulting. Built for US contracts.</h1>
-    <p class="lede">Atlantic Meridian LLC is a Nevada company providing security architecture, RMF/ATO support, SOC and identity work, and cloud security for federal and commercial clients. Clear scope. Named deliverables. No theater.</p>
+    <h1>Federal cybersecurity and AI consulting that clearance-aware buyers can trust.</h1>
+    <p class="lede">Atlantic Meridian LLC is a Nevada small business built for US federal and regulated work: RMF/ATO packages, SOC and identity hardening, and cloud security — principal-led, SOW-clear, ready to team as a cyber sub.</p>
     <div class="actions">
-      <a class="btn" href="mailto:derick@atlanticmeridianco.com">Email us</a>
+      <a class="btn" href="#capability">Capability statement</a>
+      <a class="btn ghost" href="mailto:derick@atlanticmeridianco.com">Email capture</a>
       <a class="btn ghost" href="tel:+17028999387">702-899-9387</a>
     </div>
     <div class="meta" aria-label="Focus areas">
       <span>RMF / ATO</span>
-      <span>SOC / EDR / IAM</span>
+      <span>SOC / EDR</span>
+      <span>IAM / PAM</span>
       <span>Cloud security</span>
       <span>Assessments</span>
     </div>
 
     <section id="services">
-      <h2>Services</h2>
-      <p>We help organizations design, operate, and prove security controls — especially where federal or regulated work demands audit-ready evidence.</p>
-      <div class="split">
-        <div>
-          <strong>Security architecture &amp; RMF/ATO</strong>
-          Control baselines, SSP support, POA&amp;M hygiene, and authorization packages for systems that need to stay live under scrutiny.
-        </div>
-        <div>
-          <strong>SOC, EDR, IAM &amp; PAM</strong>
-          Detection engineering, endpoint visibility, identity hardening, and privileged access design that operators can actually run.
-        </div>
-        <div>
-          <strong>Cloud security</strong>
-          Secure AWS / Azure / hybrid patterns, landing-zone guardrails, and continuous compliance for workloads that move fast.
-        </div>
-        <div>
-          <strong>Assessments &amp; fixed-fee SOWs</strong>
-          Short, scoped reviews with written findings and a remediation path — not open-ended retainers by default.
-        </div>
+      <h2>Core capabilities</h2>
+      <p>Engagements are scoped for contracting officers and primes: defined deliverables, fixed-fee assessments when it fits, and T&amp;M or FFP for longer authorization and operations work.</p>
+      <div class="grid">
+        <article>
+          <span class="tag">01 · Authorization</span>
+          <h3>RMF / ATO support</h3>
+          Categorization, control selection, SSP / ISSP authorship, ST&amp;E support, POA&amp;M hygiene, continuous monitoring, and ATO package readiness aligned to NIST SP 800-37 / 800-53 / 800-171 and FISMA.
+        </article>
+        <article>
+          <span class="tag">02 · Operations</span>
+          <h3>SOC, EDR &amp; detection</h3>
+          CrowdStrike and SIEM/SOAR-oriented detection engineering, alert triage, forensics correlation, and automation that cuts dwell time without drowning analysts.
+        </article>
+        <article>
+          <span class="tag">03 · Identity</span>
+          <h3>IAM, PAM &amp; Zero Trust</h3>
+          Privileged access design, IGA/PAM (including Saviynt-class platforms), MFA/SSO patterns, and least-privilege programs that survive audit.
+        </article>
+        <article>
+          <span class="tag">04 · Cloud</span>
+          <h3>Cloud &amp; hybrid security</h3>
+          Secure AWS / Azure / hybrid patterns, landing-zone guardrails, configuration baselines, and compliance-minded architecture for workloads that move fast.
+        </article>
+        <article>
+          <span class="tag">05 · Assurance</span>
+          <h3>Assessments &amp; fixed-fee SOWs</h3>
+          Short, written readiness reviews — gap analysis, remediation roadmap, and evidence checklist — without open-ended retainers by default.
+        </article>
+        <article>
+          <span class="tag">06 · AI security</span>
+          <h3>AI / SecOps enablement</h3>
+          Practical AI-assisted detection, triage, and security workflow automation grounded in operational cyber programs — not slideware.
+        </article>
       </div>
     </section>
 
-    <section id="about">
-      <h2>About</h2>
-      <p>Atlantic Meridian is a Nevada LLC based in Las Vegas, built as a US contracting vehicle for cybersecurity and AI-adjacent consulting. We bid and deliver under clear statements of work, and we team when a program needs more hands than a lean prime should carry alone.</p>
-      <p>Engagements are led by practitioners with hands-on federal and commercial security experience. Delivery can scale with vetted specialists when the work calls for it.</p>
+    <section id="why">
+      <h2>Why primes and agencies engage us</h2>
+      <div class="note">Atlantic Meridian LLC is newly established as a federal contracting vehicle. Practitioner depth comes from key personnel experience in prior roles — we do not invent company past performance.</div>
+      <div class="grid" style="margin-top:18px">
+        <article>
+          <h3>Principal-led delivery</h3>
+          Senior practitioner attention on scoped work. No bait-and-switch junior staffing on the package you bought.
+        </article>
+        <article>
+          <h3>Federal process fluency</h3>
+          Hands-on RMF, ATO packaging, ConMon, FISMA reporting, and POA&amp;M discipline from DOE / national security environments.
+        </article>
+        <article>
+          <h3>Clearance-aware staffing</h3>
+          Key personnel hold Q / Top Secret clearance eligibility. Engagements respect CUI and agency handling rules.
+        </article>
+        <article>
+          <h3>Teaming-ready sub</h3>
+          Built to plug into primes needing cyber depth on set-asides and full-and-open work without claiming vehicles we do not hold.
+        </article>
+      </div>
+    </section>
+
+    <section id="personnel">
+      <h2>Key personnel</h2>
+      <p><strong style="color:var(--ink)">Derick Osei</strong> — Principal / Senior Cyber Solutions Architect. CISSP, CCSP, CEH, CNDA, GSEC, GCED, Security+, Network+, CCNA, AWS Developer Associate, PMP. Q / Top Secret clearance. MS Cybersecurity Technology (UMGC); BS Information Systems &amp; Technology (ODU).</p>
+      <ul class="clean">
+        <li>Senior Cyber Solutions Architect, Nevada National Security Site / NNSA (DOE) — Jan 2019–present (prior employer): enterprise CrowdStrike Falcon EDR, Saviynt PAM/IGA, RMF ST&amp;E, ISSP authorship to NIST 800-53 / 800-171, ATO package support, ConMon, SIEM/SOAR correlation, vulnerability management (Nessus/Qualys).</li>
+        <li>Senior Cyber Solutions Architect, Federal Home Loan Bank — 2018–2019 (prior employer): incident response, SOAR, cloud and network security, OWASP app testing, NIST 800-53 / FIPS 140-2 aligned assessments.</li>
+      </ul>
+      <p class="note" style="margin-top:18px">Those engagements were delivered under prior employers — not under Atlantic Meridian LLC. Firm past performance will be listed here as Meridian contracts are completed. Professional references from prior roles available under NDA.</p>
+    </section>
+
+    <section id="company">
+      <h2>Company data</h2>
+      <p>Procurement-ready facts for SAM market research, sources sought, and teaming. UEI and CAGE will be published here as soon as GSA validation completes.</p>
+      <div class="data">
+        <div><dt>Legal name</dt><dd>Atlantic Meridian LLC</dd></div>
+        <div><dt>State / formed</dt><dd>Nevada · Aug 26, 2026</dd></div>
+        <div><dt>Entity type</dt><dd>Limited Liability Company</dd></div>
+        <div><dt>Business size</dt><dd>Small Business</dd></div>
+        <div><dt>UEI</dt><dd>Pending SAM validation</dd></div>
+        <div><dt>CAGE</dt><dd>Pending with UEI</dd></div>
+        <div><dt>Primary NAICS</dt><dd>541512 — Computer Systems Design</dd></div>
+        <div><dt>Secondary NAICS</dt><dd>541519 · 541511</dd></div>
+        <div><dt>Website</dt><dd>atlanticmeridianco.com</dd></div>
+        <div><dt>SAM status</dt><dd>Docs submitted · review in progress</dd></div>
+      </div>
+    </section>
+
+    <section id="capability">
+      <h2>Capability statement</h2>
+      <p>One-page PDF for contracting officers, small business liaisons, and prime capture teams evaluating Atlantic Meridian for cyber subcontract or direct small-business work.</p>
+      <div class="actions" style="margin-top:16px">
+        <a class="btn" href="/capability-statement.pdf">Download PDF</a>
+        <a class="btn ghost" href="mailto:derick@atlanticmeridianco.com?subject=Capability%20statement%20request">Request by email</a>
+      </div>
+      <p style="margin-top:14px;font-size:14px">Prefer email? Ask for the latest capability statement and we’ll send the current PDF within one business day.</p>
+    </section>
+
+    <section id="teaming">
+      <h2>Teaming &amp; subcontracting</h2>
+      <p>Open to mentor-protégé discussions, bilateral capability swaps, and prime subcontractor roles where RMF/ATO, SOC/EDR, IAM/PAM, or cloud security strengthens a broader bid. Direct outreach from small business liaisons and capture managers is welcome.</p>
     </section>
 
     <section id="contact">
@@ -219,9 +370,10 @@
       </address>
     </section>
   </main>
+
   <footer>
-    <span>ATLANTIC MERIDIAN LLC · NEVADA · UNITED STATES</span>
-    <span>Cybersecurity &amp; AI consulting</span>
+    <span>ATLANTIC MERIDIAN LLC · NEVADA · SMALL BUSINESS</span>
+    <span>Cybersecurity &amp; AI consulting for federal work</span>
   </footer>
 </body>
 </html>
