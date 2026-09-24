@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Atlantic Meridian</title>
-  <meta name="description" content="Atlantic Meridian LLC — Ghana to United States commerce." />
+  <title>Atlantic Meridian | Cybersecurity &amp; AI Consulting</title>
+  <meta name="description" content="Atlantic Meridian LLC — Nevada cybersecurity and AI consulting for federal and commercial clients. RMF/ATO, SOC, cloud security, and assessments." />
+  <meta name="theme-color" content="#0e1621" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap" rel="stylesheet" />
@@ -18,6 +19,7 @@
       --line: #2a3b52;
     }
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     html, body { margin: 0; padding: 0; }
     body {
       font-family: "IBM Plex Sans", system-ui, sans-serif;
@@ -25,6 +27,7 @@
       color: var(--ink);
       line-height: 1.6;
     }
+    a { color: var(--gold); }
     header {
       max-width: 960px;
       margin: 0 auto;
@@ -32,6 +35,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
     }
     .mark {
       font-family: "IBM Plex Serif", Georgia, serif;
@@ -39,6 +44,7 @@
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--gold);
+      text-decoration: none;
     }
     nav a {
       color: var(--muted);
@@ -48,23 +54,25 @@
       letter-spacing: 0.04em;
       text-transform: uppercase;
     }
+    nav a:first-child { margin-left: 0; }
     nav a:hover { color: var(--ink); }
     main { max-width: 960px; margin: 0 auto; padding: 56px 24px 88px; }
     .rule { height: 1px; background: var(--gold); width: 56px; margin-bottom: 28px; }
     h1 {
       font-family: "IBM Plex Serif", Georgia, serif;
-      font-size: clamp(36px, 6vw, 58px);
+      font-size: clamp(34px, 5.5vw, 54px);
       font-weight: 500;
       line-height: 1.12;
       margin: 0 0 18px;
-      max-width: 16ch;
+      max-width: 18ch;
     }
     .lede {
       color: var(--muted);
       font-size: 18px;
-      max-width: 46ch;
+      max-width: 52ch;
       margin-bottom: 36px;
     }
+    .actions { display: flex; flex-wrap: wrap; gap: 8px; }
     .btn {
       display: inline-block;
       background: var(--gold);
@@ -79,8 +87,8 @@
       background: transparent;
       color: var(--ink);
       border: 1px solid var(--line);
-      margin-left: 8px;
     }
+    .btn:hover { filter: brightness(1.05); }
     section { margin-top: 72px; }
     h2 {
       font-family: "IBM Plex Serif", Georgia, serif;
@@ -92,7 +100,7 @@
     p { color: var(--muted); max-width: 62ch; }
     .split {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1px;
       background: var(--line);
       border: 1px solid var(--line);
@@ -101,9 +109,33 @@
     .split div {
       background: var(--panel);
       padding: 24px;
+      color: var(--muted);
+      font-size: 15px;
     }
-    .split strong { display: block; color: var(--ink); margin-bottom: 8px; }
-    address { font-style: normal; color: var(--ink); }
+    .split strong {
+      display: block;
+      color: var(--ink);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .meta span {
+      border: 1px solid var(--line);
+      padding: 8px 12px;
+      background: var(--panel);
+    }
+    address { font-style: normal; color: var(--ink); line-height: 1.8; }
+    address a { text-decoration: none; }
+    address a:hover { text-decoration: underline; }
     footer {
       max-width: 960px;
       margin: 0 auto;
@@ -112,41 +144,68 @@
       font-size: 12px;
       letter-spacing: 0.04em;
       border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    @media (max-width: 520px) {
+      nav a { margin-left: 12px; font-size: 12px; }
+      h1 { max-width: none; }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="mark">Atlantic Meridian</div>
+    <a class="mark" href="#">Atlantic Meridian</a>
     <nav>
-      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
   <main>
     <div class="rule"></div>
-    <h1>Ghana to the United States. Commerce, done clean.</h1>
-    <p class="lede">Atlantic Meridian LLC is a Nevada company built for cross-border trade between Ghana and the United States. Direct counterparts. Clear paper. No theater.</p>
-    <a class="btn" href="tel:+17028999387">702-899-9387</a>
-    <a class="btn ghost" href="mailto:derick.o.osei@gmail.com">Email</a>
+    <h1>Cybersecurity and AI consulting. Built for US contracts.</h1>
+    <p class="lede">Atlantic Meridian LLC is a Nevada company providing security architecture, RMF/ATO support, SOC and identity work, and cloud security for federal and commercial clients. Clear scope. Named deliverables. No theater.</p>
+    <div class="actions">
+      <a class="btn" href="mailto:derick@atlanticmeridianco.com">Email us</a>
+      <a class="btn ghost" href="tel:+17028999387">702-899-9387</a>
+    </div>
+    <div class="meta" aria-label="Focus areas">
+      <span>RMF / ATO</span>
+      <span>SOC / EDR / IAM</span>
+      <span>Cloud security</span>
+      <span>Assessments</span>
+    </div>
 
-    <section id="work">
-      <h2>What we do</h2>
-      <p>We sit between operators on both sides of the Atlantic who need a US entity, a responsible party, and a clean path for goods, introductions, and commercial work. We do not pretend to be a bank, a mine, or a government office.</p>
+    <section id="services">
+      <h2>Services</h2>
+      <p>We help organizations design, operate, and prove security controls — especially where federal or regulated work demands audit-ready evidence.</p>
       <div class="split">
         <div>
-          <strong>United States</strong>
-          Nevada LLC, Las Vegas office of record, US counterpart for Ghana-based principals.
+          <strong>Security architecture &amp; RMF/ATO</strong>
+          Control baselines, SSP support, POA&amp;M hygiene, and authorization packages for systems that need to stay live under scrutiny.
         </div>
         <div>
-          <strong>Ghana</strong>
-          Trade and commercial relationships into West Africa. Introductions only when they are real.
+          <strong>SOC, EDR, IAM &amp; PAM</strong>
+          Detection engineering, endpoint visibility, identity hardening, and privileged access design that operators can actually run.
         </div>
         <div>
-          <strong>Paper</strong>
-          Named counterparties. Written terms. No “trust me” side deals on this letterhead.
+          <strong>Cloud security</strong>
+          Secure AWS / Azure / hybrid patterns, landing-zone guardrails, and continuous compliance for workloads that move fast.
+        </div>
+        <div>
+          <strong>Assessments &amp; fixed-fee SOWs</strong>
+          Short, scoped reviews with written findings and a remediation path — not open-ended retainers by default.
         </div>
       </div>
+    </section>
+
+    <section id="about">
+      <h2>About</h2>
+      <p>Atlantic Meridian is a Nevada LLC based in Las Vegas, built as a US contracting vehicle for cybersecurity and AI-adjacent consulting. We bid and deliver under clear statements of work, and we team when a program needs more hands than a lean prime should carry alone.</p>
+      <p>Engagements are led by practitioners with hands-on federal and commercial security experience. Delivery can scale with vetted specialists when the work calls for it.</p>
     </section>
 
     <section id="contact">
@@ -155,13 +214,14 @@
         Atlantic Meridian LLC<br />
         3753 Howard Hughes Parkway, Suite 200<br />
         Las Vegas, NV 89169<br />
-        <a href="tel:+17028999387" style="color:#c6a15b">702-899-9387</a><br />
-        <a href="mailto:derick.o.osei@gmail.com" style="color:#c6a15b">derick.o.osei@gmail.com</a>
+        <a href="tel:+17028999387">702-899-9387</a><br />
+        <a href="mailto:derick@atlanticmeridianco.com">derick@atlanticmeridianco.com</a>
       </address>
     </section>
   </main>
   <footer>
-    ATLANTIC MERIDIAN LLC · NEVADA · UNITED STATES
+    <span>ATLANTIC MERIDIAN LLC · NEVADA · UNITED STATES</span>
+    <span>Cybersecurity &amp; AI consulting</span>
   </footer>
 </body>
 </html>
