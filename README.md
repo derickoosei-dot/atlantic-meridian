@@ -4,7 +4,7 @@ Static GitHub Pages site for Atlantic Meridian LLC, a Nevada small business prov
 
 The repository root is the Pages site:
 
-- `index.html` — procurement strip, core services, company-led delivery (no named individuals or personal certifications), company data with UEI KA32TSXE4XK7, CAGE 25VQ8, and active SAM.gov registration, capability-statement CTA, teaming, and company contact
+- `index.html` — procurement strip, core services, fixed-scope packages (starting prices only), company-led delivery (no named individuals or personal certifications), company data with UEI KA32TSXE4XK7, CAGE 25VQ8, and active SAM.gov registration, capability-statement CTA, teaming, and company contact
 - `capability-statement.pdf` — one-page capability statement at `/capability-statement.pdf`
 - `CNAME` — `atlanticmeridianco.com`
 
