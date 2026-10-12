@@ -1,74 +1,316 @@
 %PDF-1.3
-%“Œ‹ž ReportLab Generated PDF document (opensource)
+%âãÏÓ
 1 0 obj
 <<
-/F1 2 0 R /F2 3 0 R
+/Producer (ReportLab PDF Library \055 \050opensource\051)
+/Author (Atlantic Meridian LLC)
+/CreationDate (D\07220260924044045\05300\04700\047)
+/Creator (anonymous)
+/Keywords ()
+/ModDate (D\07220260924044045\05300\04700\047)
+/Subject (Cybersecurity and AI consulting capability statement)
+/Title (Atlantic Meridian LLC \204 Capability Statement)
+/Trapped (\057False)
 >>
 endobj
 2 0 obj
 <<
-/BaseFont /Helvetica /Encoding /WinAnsiEncoding /Name /F1 /Subtype /Type1 /Type /Font
+/Type /Pages
+/Count 1
+/Kids [ 4 0 R ]
 >>
 endobj
 3 0 obj
 <<
-/BaseFont /Times-Bold /Encoding /WinAnsiEncoding /Name /F2 /Subtype /Type1 /Type /Font
+/Type /Catalog
+/Pages 2 0 R
 >>
 endobj
 4 0 obj
 <<
-/Contents 8 0 R /MediaBox [ 0 0 612 792 ] /Parent 7 0 R /Resources <<
-/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
->> /Rotate 0 /Trans <<
-
->> 
-  /Type /Page
+/Contents 5 0 R
+/MediaBox [ 0 0 612 792 ]
+/Resources <<
+/Font 6 0 R
+/ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/Parent 2 0 R
 >>
 endobj
 5 0 obj
 <<
-/PageMode /UseNone /Pages 7 0 R /Type /Catalog
+/Length 8722
 >>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+.054902 .086275 .129412 rg
+n 0 0 612 792 re f*
+.776471 .631373 .356863 RG
+1.75 w
+n 40 760 m 572 760 l S
+.776471 .631373 .356863 rg
+BT /F2 16 Tf 19.2 TL ET
+BT 1 0 0 1 40 736 Tm (ATLANTIC MERIDIAN LLC) Tj T* ET
+.603922 .670588 .752941 rg
+BT /F1 8 Tf 9.6 TL ET
+BT 1 0 0 1 40 718 Tm (CAPABILITY STATEMENT  \267  CYBERSECURITY & AI CONSULTING  \267  NEVADA SMALL BUSINESS) Tj T* ET
+.909804 .933333 .964706 rg
+BT /F1 8 Tf 9.6 TL ET
+BT 1 0 0 1 469.184 740 Tm (info@atlanticmeridianco.com) Tj T* ET
+BT 1 0 0 1 522.192 729 Tm (702-899-9387) Tj T* ET
+BT 1 0 0 1 490.2 718 Tm (atlanticmeridianco.com) Tj T* ET
+BT 1 0 0 1 441.272 707 Tm (3753 Howard Hughes Pkwy, Ste 200) Tj T* ET
+BT 1 0 0 1 494.176 696 Tm (Las Vegas, NV 89169) Tj T* ET
+.164706 .231373 .321569 RG
+.7 w
+n 40 688 m 572 688 l S
+.776471 .631373 .356863 rg
+BT /F2 11 Tf 13.2 TL ET
+BT 1 0 0 1 40 668 Tm (COMPANY OVERVIEW) Tj T* ET
+.603922 .670588 .752941 rg
+BT /F1 8.5 Tf 10.2 TL ET
+BT 1 0 0 1 40 652 Tm (Atlantic Meridian LLC is a Nevada small business providing cybersecurity and AI consulting for federal agencies and prime contractors.) Tj T* ET
+BT 1 0 0 1 40 640.5 Tm (Focus areas: RMF/ATO support, SOC/EDR operations, IAM/PAM and Zero Trust, cloud and hybrid security, and fixed-fee assessments.) Tj T* ET
+BT 1 0 0 1 40 629 Tm (Principal-led delivery. Teaming-ready subcontractor.) Tj T* ET
+.776471 .631373 .356863 rg
+BT /F2 11 Tf 13.2 TL ET
+BT 1 0 0 1 40 609.5 Tm (CORE COMPETENCIES) Tj T* ET
+.776471 .631373 .356863 rg
+n
+43.8 595.6 m
+43.8 596.4837 43.08366 597.2 42.2 597.2 c
+41.31634 597.2 40.6 596.4837 40.6 595.6 c
+40.6 594.7163 41.31634 594 42.2 594 c
+43.08366 594 43.8 594.7163 43.8 595.6 c
+f*
+.603922 .670588 .752941 rg
+BT /F1 8 Tf 9.6 TL ET
+BT 1 0 0 1 52 593.5 Tm (RMF / ATO: categorization, SSP/ISSP, ST&E support, POA&M, ConMon, FISMA-aligned packaging \(NIST SP 800-37 / 800-53 / 800-171\).) Tj T* ET
+.776471 .631373 .356863 rg
+n
+43.8 581.9 m
+43.8 582.7837 43.08366 583.5 42.2 583.5 c
+41.31634 583.5 40.6 582.7837 40.6 581.9 c
+40.6 581.0163 41.31634 580.3 42.2 580.3 c
+43.08366 580.3 43.8 581.0163 43.8 581.9 c
+f*
+.603922 .670588 .752941 rg
+BT /F1 8 Tf 9.6 TL ET
+BT 1 0 0 1 52 579.8 Tm (SOC / EDR: CrowdStrike Falcon, SIEM/SOAR correlation, detection engineering, incident response.) Tj T* ET
+.776471 .631373 .356863 rg
+n
+43.8 568.2 m
+43.8 569.0837 43.08366 569.8 42.2 569.8 c
+41.31634 569.8 40.6 569.0837 40.6 568.2 c
+40.6 567.3163 41.31634 566.6 42.2 566.6 c
+43.08366 566.6 43.8 567.3163 43.8 568.2 c
+f*
+.603922 .670588 .752941 rg
+BT /F1 8 Tf 9.6 TL ET
+BT 1 0 0 1 52 566.1 Tm (IAM / PAM: privileged access, IGA/PAM platforms \(including Saviynt-class\), MFA/SSO, least privilege.) Tj T* ET
+.776471 .631373 .356863 rg
+n
+43.8 554.5 m
+43.8 555.3837 43.08366 556.1 42.2 556.1 c
+41.31634 556.1 40.6 555.3837 40.6 554.5 c
+40.6 553.6163 41.31634 552.9 42.2 552.9 c
+43.08366 552.9 43.8 553.6163 43.8 554.5 c
+f*
+.603922 .670588 .752941 rg
+BT /F1 8 Tf 9.6 TL ET
+BT 1 0 0 1 52 552.4 Tm (Cloud security: AWS / Azure / hybrid baselines, identity and configuration hardening.) Tj T* ET
+.776471 .631373 .356863 rg
+n
+43.8 540.8 m
+43.8 541.6837 43.08366 542.4 42.2 542.4 c
+41.31634 542.4 40.6 541.6837 40.6 540.8 c
+40.6 539.9163 41.31634 539.2 42.2 539.2 c
+43.08366 539.2 43.8 539.9163 43.8 540.8 c
+f*
+.603922 .670588 .752941 rg
+BT /F1 8 Tf 9.6 TL ET
+BT 1 0 0 1 52 538.7 Tm (Assessments: short fixed-fee readiness reviews with written remediation roadmaps.) Tj T* ET
+.776471 .631373 .356863 rg
+n
+43.8 527.1 m
+43.8 527.9837 43.08366 528.7 42.2 528.7 c
+41.31634 528.7 40.6 527.9837 40.6 527.1 c
+40.6 526.2163 41.31634 525.5 42.2 525.5 c
+43.08366 525.5 43.8 526.2163 43.8 527.1 c
+f*
+.603922 .670588 .752941 rg
+BT /F1 8 Tf 9.6 TL ET
+BT 1 0 0 1 52 525 Tm (AI-enabled SecOps: automation and assisted triage grounded in operational programs.) Tj T* ET
+.776471 .631373 .356863 rg
+BT /F2 11 Tf 13.2 TL ET
+BT 1 0 0 1 40 505.3 Tm (DIFFERENTIATORS) Tj T* ET
+.776471 .631373 .356863 rg
+n
+43.8 491.4 m
+43.8 492.2837 43.08366 493 42.2 493 c
+41.31634 493 40.6 492.2837 40.6 491.4 c
+40.6 490.5163 41.31634 489.8 42.2 489.8 c
+43.08366 489.8 43.8 490.5163 43.8 491.4 c
+f*
+.603922 .670588 .752941 rg
+BT /F1 8 Tf 9.6 TL ET
+BT 1 0 0 1 52 489.3 Tm (Principal-led cyber delivery with senior attention on scoped statements of work.) Tj T* ET
+.776471 .631373 .356863 rg
+n
+43.8 477.7 m
+43.8 478.5837 43.08366 479.3 42.2 479.3 c
+41.31634 479.3 40.6 478.5837 40.6 477.7 c
+40.6 476.8163 41.31634 476.1 42.2 476.1 c
+43.08366 476.1 43.8 476.8163 43.8 477.7 c
+f*
+.603922 .670588 .752941 rg
+BT /F1 8 Tf 9.6 TL ET
+BT 1 0 0 1 52 475.6 Tm (Company point of contact for capture, contracting, and teaming.) Tj T* ET
+.776471 .631373 .356863 rg
+n
+43.8 464 m
+43.8 464.8837 43.08366 465.6 42.2 465.6 c
+41.31634 465.6 40.6 464.8837 40.6 464 c
+40.6 463.1163 41.31634 462.4 42.2 462.4 c
+43.08366 462.4 43.8 463.1163 43.8 464 c
+f*
+.603922 .670588 .752941 rg
+BT /F1 8 Tf 9.6 TL ET
+BT 1 0 0 1 52 461.9 Tm (Practitioner depth and staffing for an opportunity are provided under NDA and on proposal.) Tj T* ET
+.776471 .631373 .356863 rg
+n
+43.8 450.3 m
+43.8 451.1837 43.08366 451.9 42.2 451.9 c
+41.31634 451.9 40.6 451.1837 40.6 450.3 c
+40.6 449.4163 41.31634 448.7 42.2 448.7 c
+43.08366 448.7 43.8 449.4163 43.8 450.3 c
+f*
+.603922 .670588 .752941 rg
+BT /F1 8 Tf 9.6 TL ET
+BT 1 0 0 1 52 448.2 Tm (Honest new-entity posture: no LLC past performance yet; firm past performance is listed only as earned.) Tj T* ET
+.776471 .631373 .356863 rg
+BT /F2 11 Tf 13.2 TL ET
+BT 1 0 0 1 40 428.5 Tm (DELIVERY) Tj T* ET
+.603922 .670588 .752941 rg
+BT /F1 8.5 Tf 10.2 TL ET
+BT 1 0 0 1 40 412.5 Tm (Atlantic Meridian is a principal-led Nevada small business. This statement does not name individuals or list personal certifications.) Tj T* ET
+BT 1 0 0 1 40 401 Tm (Contracting officers and primes receive practitioner detail under NDA and in the proposal. The company is teaming-ready without a public) Tj T* ET
+BT 1 0 0 1 40 389.5 Tm (personnel roster.) Tj T* ET
+.776471 .631373 .356863 rg
+BT /F2 11 Tf 13.2 TL ET
+BT 1 0 0 1 40 370 Tm (NAICS / COMPANY DATA) Tj T* ET
+.164706 .231373 .321569 RG
+.082353 .133333 .2 rg
+.7 w
+n 40 250 532 110 re B*
+.776471 .631373 .356863 rg
+BT /F1 8 Tf 9.6 TL ET
+BT 1 0 0 1 52 342 Tm (Primary NAICS) Tj T* ET
+.909804 .933333 .964706 rg
+BT /F1 8 Tf 9.6 TL ET
+BT 1 0 0 1 172 342 Tm (541512 Computer Systems Design Services) Tj T* ET
+.776471 .631373 .356863 rg
+BT /F1 8 Tf 9.6 TL ET
+BT 1 0 0 1 52 327 Tm (Secondary NAICS) Tj T* ET
+.909804 .933333 .964706 rg
+BT /F1 8 Tf 9.6 TL ET
+BT 1 0 0 1 172 327 Tm (541519   \267   541511) Tj T* ET
+.776471 .631373 .356863 rg
+BT /F1 8 Tf 9.6 TL ET
+BT 1 0 0 1 52 312 Tm (Business size) Tj T* ET
+.909804 .933333 .964706 rg
+BT /F1 8 Tf 9.6 TL ET
+BT 1 0 0 1 172 312 Tm (Small Business \(Nevada LLC\)) Tj T* ET
+.776471 .631373 .356863 rg
+BT /F1 8 Tf 9.6 TL ET
+BT 1 0 0 1 52 297 Tm (UEI / CAGE) Tj T* ET
+.909804 .933333 .964706 rg
+BT /F1 8 Tf 9.6 TL ET
+BT 1 0 0 1 172 297 Tm (KA32TSXE4XK7   \267   25VQ8) Tj T* ET
+.776471 .631373 .356863 rg
+BT /F1 8 Tf 9.6 TL ET
+BT 1 0 0 1 52 282 Tm (Formed) Tj T* ET
+.909804 .933333 .964706 rg
+BT /F1 8 Tf 9.6 TL ET
+BT 1 0 0 1 172 282 Tm (August 26, 2026   \267   Nevada) Tj T* ET
+.776471 .631373 .356863 rg
+BT /F1 8 Tf 9.6 TL ET
+BT 1 0 0 1 52 267 Tm (SAM status) Tj T* ET
+.909804 .933333 .964706 rg
+BT /F1 8 Tf 9.6 TL ET
+BT 1 0 0 1 172 267 Tm (Active \(renews Sep 25, 2027\)) Tj T* ET
+.776471 .631373 .356863 rg
+BT /F2 11 Tf 13.2 TL ET
+BT 1 0 0 1 40 228 Tm (PAST PERFORMANCE) Tj T* ET
+.603922 .670588 .752941 rg
+BT /F1 8.5 Tf 10.2 TL ET
+BT 1 0 0 1 40 212 Tm (Atlantic Meridian LLC is newly established and has no completed contracts under the LLC name yet. Practitioner experience from prior roles) Tj T* ET
+BT 1 0 0 1 40 200.5 Tm (is available to contracting officers and primes under NDA and on proposal. Firm past performance will be added as Meridian engagements) Tj T* ET
+BT 1 0 0 1 40 189 Tm (are completed. This statement does not claim contract vehicles or socioeconomic designations.) Tj T* ET
+.776471 .631373 .356863 rg
+BT /F2 11 Tf 13.2 TL ET
+BT 1 0 0 1 40 169.5 Tm (TEAMING) Tj T* ET
+.603922 .670588 .752941 rg
+BT /F1 8.5 Tf 10.2 TL ET
+BT 1 0 0 1 40 153.5 Tm (Open to prime subcontract roles, teaming agreements, and mentor-prot\351g\351 discussions for cybersecurity scope.) Tj T* ET
+.909804 .933333 .964706 rg
+BT /F1 8.5 Tf 10.2 TL ET
+BT 1 0 0 1 40 140 Tm (info@atlanticmeridianco.com | 702-899-9387 | atlanticmeridianco.com) Tj T* ET
+.164706 .231373 .321569 RG
+.6 w
+n 40 46 m 572 46 l S
+.603922 .670588 .752941 rg
+BT /F1 7.5 Tf 9 TL ET
+BT 1 0 0 1 138.8438 30 Tm (Atlantic Meridian LLC   \267   Nevada   \267   United States   \267   For official market research and teaming use) Tj T* ET
+ 
+
+endstream
 endobj
 6 0 obj
 <<
-/Author (Atlantic Meridian LLC) /CreationDate (D:20260924044045+00'00') /Creator (anonymous) /Keywords () /ModDate (D:20260924044045+00'00') /Producer (ReportLab PDF Library - \(opensource\)) 
-  /Subject (Cybersecurity and AI consulting capability statement) /Title (Atlantic Meridian LLC \204 Capability Statement) /Trapped /False
+/F1 7 0 R
+/F2 8 0 R
 >>
 endobj
 7 0 obj
 <<
-/Count 1 /Kids [ 4 0 R ] /Type /Pages
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
 >>
 endobj
 8 0 obj
 <<
-/Filter [ /ASCII85Decode /FlateDecode ] /Length 3366
+/BaseFont /Times-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
 >>
-stream
-Gau0E>Ar7U(4OT53)>0Mi$c07;W_O*7nF0.G$q9eFHIA/U)e)n0m#u6`W#Wq,^"/UBk!%0/R20fai!T&^-cV-ia5FX7N'!1#\R3WBKCfNcqME3n-8g[6r>Pb<HV,;LZl/MMPe!4^/aSrE\Wtia*-tRKC/+TMJX$Uej(C5B%R;9L.*(k^ukJ];fMRhc8&D(M$b,&[Ot`4"E.&RI=u8pBLI[=.XET`51eLen0JM`cet!'hKZ)?0o)U?=^3Sl(#7Tg5=>2f#_*Wq,-'VeGT^IrQK%s;`D>!%Uk-GXE>A'@2OYl!R<uF"`StJAIY/d86@\7'6@aERfDtM](]GcNk?g/qpc%[X0OM#8Y;bELFksa<o'a4a%t^X%Es!4cK>ktDK!CiKl8kpOMJM]Gpcmc5P)m^V>X`^-YYed\Cm&^pJ'g<RH(@>@/!DrdGuQ1hOc=N(/R[hSU7kJ%h%^=MWda6Cm\st]p?ON]85M#]3lgSuR[Tsl92KI[f<?h/^(eo#N8[F9HXmlHIXcg75u9Aa<V<Km9guAp&6G=:%B\QKm:\A0eK$WP7bf`.RKQR:4)<;&Mn%P9'tZ8"K%;*)Pd`hiUm`u8isd4ZUpZfeo%%#nKCteM\QeiY*bV+&,rSWXg;MF9-aZKrAZH"&$'8+O@E"gO9VKUBR_hEj,rr"UfU'Pj^6n@3H?in0`M05'l5-+=b\]<hnu>8s5/&U@fWpm01^1I#H'FtfphTa^aV]N6/nn9$AYm&5/elc6q*@j(X!2:tHHBiC%\)S1R2<$"CA.P!XASBNq3c`CJRX\peHlR;K8$cs]ChJ!bC?k(J?Wi>HoFZU-5KB!?QS^`d%+Sl*c@1V=F@\k$trZ"M)1IL^QPh/rnB3E'CKR\R^*c>Q6oD/Hr2"s1da)p;=O>a"b%<64^RcQ>E.pV8Boa*+1Uk9Ttd$Lr8;)>j<pgu3+0947Z4A6&B/`")mH5$"sNc[7KH1'Iq1>r6.[qM@[Pu=WfYUrg#Hl-S$HNR2SK]sH"OO[akn$118,GXRkdMOSa]>D&)st8pG6!sd%K;*d%nr1U,C[?Ab&4@&Xla>Ha^^3Ck]Y"K?;rP^#,,3Ql#R]^NR$#."+_:A='(jpGD_AGMESo5HP\e#f/)PWd9PYS;@H)0A4]gmJc\^/YQ+*UFC)a,"G`$6PVWZ<"`$T*32Vj#sInoAWO%JW<bTNTo'gi0tK5fF0$]Kek)_KMJCb55Z+tjaIn?LNkh?hT>S;mT&ZIrPOAp_BGq1g/c=^5YkBsl?HSG-XU\iAZ\UPkjeroKYqFqYJ9u*kmZ"lTg1/?78*YXbLe"?J9W.0L*XEQc@O@OR4if>YG!Ajt*9gG.@uL(OH6<?_[qcW@<5X/o9FB6C*9<VX&%I<?oROamoml#oS;6^6,\9%oHQ#<i0er<,HQr+M;$!$gZ3oCf_+kr33!/r@]]Aa"P[]<Zs#bqqQ$3uHlPZK8h<SLc,Lp4jB\T(=/5%]-eR<IN-$5kA<ehY.R.h8*c]enb4,-'3eR@]UiU*)FFJ*&,0d_V=-4Y&kU(5tqPVHP+Zn@K3KD0#oj4TIt)>@:#k8n;jBaM+*>!=nB/o@BHCm/-L'.5mdVd_[Okt(FY,,[pQ&L*"oRp8pLP\?*)QX^*VI\Q2.dVVCmE#&*YIDbGnO_Bd&QX`@LIc;L5,j62-,2&nR&;>2(*\fg:=9MFtOuelp.:LO;4=BeH4JSWcQK,lA+n$&jQN`@)]!%,^?FS=,Z_?D#,-Q&B,taml7UD)]Gl*>':[=.pM4u(9Y?QF4&^<'$E_Hhh9cW5a"F49bD/XF:Er*QX=2:R'*mpl[?"=RBDV>q8P,cNA9G>K5@944=*b.FV#Him\'Nsh+UtJ8#rtm&g<"('>d*'DYQ+t0#Dh/U4EuZ>Z>n+IllT0jtJU1&"c-*aS;QY2h[5UdA4\[u0ll`o(:orpR3D28#MJ^D0(u<+r_C62B[kM-^e"Y@U8[WZ5$A0$n(mKB0co:s),#g&3_&>>(E(;=bn6D48O7OdK[a?ZfaDJ#T%O&=;NXX%l(j7ndd-W4'Sh5@dG)5,t!cRhd8N+W)b:tG>2fXq#'&[WPWC8-_Z9?H>?sb0MN"A0ZY@+mbb.3>rCJ61`^3C;JME=unbFBes-A,_?;fN:E-<<WZA93^8*"u0B'AHiS0ejC0&7a/O+P@`E/B=P7h8E(.8J!5=$qo(3^i>PQ2SDUbjp7^/DRWp-9R1mBF[hRQ/<+@K(>``\4Fi^$](Eot[!E_F(DTZ*"Q/4G]n>4j'^ZH\9C&O9Cl[J@@fkb@U?o:qJ`rK(@NI#7lr0$_NYN\WKJ<AC6-`&$?ud=4<U^0s8"uEXkL5_%+b8@RcQOs[%EMie;-%`29(RkT$`j<CXBoLg+%e"RAX4e9'U;Z!UErrlP9prAGM66nd_Ar?q3u;dh?TI;hCej&)^02?Zp+i;YMK^;&3f*cIIr6'?kia#5gp-Mb%'N*EC3Y5bGB`J_cV`u*3leE[Rh_tDr/3G0ib=b;geY_+GCJKU#C$KF017,ZG>mZZdgm(IrZZB!qdcWS-TYA0;i=p`8f>P(H=PM'MZgQBcb\JH;dYXl0`'B)0;)f^I'N>p=dQkjmDHX>Kf+hmk,&&^!QZ7?)HoNL4t\qp't6\gCH65\qNhti.@p*rr1pEqtgo8Tjd4lMU*\_F!:BJQeIlkXH0cBV<Pc/>(a%Hn:Kk6.=0+9A="NN/>(:*W["n@hSF;:%NlQ>o(`6*Zuu[o1`*aL"<dQpKI>.mKGWIHDjC6.;kBai57m@[hrXi9)cn]phg_6c34^VKqs#iEMg3kQKP0Nb^Lasgh=-`W-C#sI-F&A?';!1jg\^IQ$ca^Bd4XcC]*9Ld:1g0"3Z3lMl=RnsOOd\K0V1(hC<G#4MdI5s_fLqk$*323j(3H4#@%L?>EJFb+R20J_'qaXY0/?=>;$9@f&'`72bS'HpF"5?](XEn*99*#8W`=ISX`Z?XSq]UH"%P'/nLQ`FG.ACZQi8&Hj,YCOo$PG5[2oKR+2hhg!@)X17iVCV3aVs&5Rcg<UIN^E'j)JR@'?/:`&/,imhT=2WKLl<uK\4_J';Y)KWcSBC/Q)q2XlRD>:!$RNmYMBAG^;Dj-Y=V+K71!M7qR&uGMhXX^'@i45N%:bf4G45Iq+$5e_6S-Mn'ODo[HdJM4MR@cr0!YY@dEj<3IeF#/oqfK.#Z^`OCIaoBci0*4VlNe2$oIu-7//``>-r3^,ot=dJ48o>%;FO;[EKF_MH16qneG%+*@H+tQ]`7dHrX7b)gXprKe+Kp>(?q3O8_Qt\fFVDMhpmT9&*(A:o*e-/9Z$lurC&jD.@(MCY?5E->;U6ReaOE>N-*,D.6<X"mnA*Z_=Aq!*1-WN<+C4S-iX:OQ[#M~>endstream
 endobj
 xref
 0 9
 0000000000 65535 f 
-0000000061 00000 n 
-0000000102 00000 n 
-0000000209 00000 n 
-0000000317 00000 n 
-0000000510 00000 n 
-0000000578 00000 n 
-0000000931 00000 n 
-0000000990 00000 n 
+0000000015 00000 n 
+0000000401 00000 n 
+0000000460 00000 n 
+0000000509 00000 n 
+0000000698 00000 n 
+0000009472 00000 n 
+0000009513 00000 n 
+0000009620 00000 n 
 trailer
 <<
-/ID 
-[<4acc031a35b6e4d4ba31146d4a566b92><4acc031a35b6e4d4ba31146d4a566b92>]
-% ReportLab generated PDF document -- digest (opensource)
-
-/Info 6 0 R
-/Root 5 0 R
 /Size 9
+/Root 3 0 R
+/Info 1 0 R
 >>
 startxref
-4447
+9728
 %%EOF
