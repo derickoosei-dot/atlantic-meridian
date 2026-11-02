@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About | Atlantic Meridian</title>
+  <meta name="description" content="Atlantic Meridian LLC is a minority-owned Henderson, Nevada small business providing cybersecurity and compliance consulting for federal, state and local, nonprofit, healthcare, education, and commercial organizations." />
+  <meta name="theme-color" content="#0e1621" />
+  <link rel="canonical" href="https://atlanticmeridianco.com/about/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0e1621;
+      --panel: #152233;
+      --ink: #e8eef6;
+      --muted: #9aabc0;
+      --gold: #c6a15b;
+      --line: #2a3b52;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "IBM Plex Sans", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    a { color: var(--gold); }
+    .strip {
+      background: #0a1018;
+      border-bottom: 1px solid var(--line);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+    .strip-inner, header, main, footer, .band-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 10px 24px;
+    }
+    .strip-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      justify-content: space-between;
+    }
+    .strip strong { color: var(--ink); font-weight: 600; }
+    header {
+      padding-top: 22px;
+      padding-bottom: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .mark {
+      font-family: "IBM Plex Serif", Georgia, serif;
+      font-size: 17px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+    }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 12px;
+      margin-left: 16px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    nav a:hover { color: var(--ink); }
+    main { padding: 48px 24px 96px; }
+    .rule { height: 1px; background: var(--gold); width: 56px; margin-bottom: 24px; }
+    h1 {
+      font-family: "IBM Plex Serif", Georgia, serif;
+      font-size: clamp(32px, 5vw, 50px);
+      font-weight: 500;
+      line-height: 1.12;
+      margin: 0 0 16px;
+      max-width: 18ch;
+    }
+    .lede {
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 58ch;
+      margin: 0 0 28px;
+    }
+    .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+    .btn {
+      display: inline-block;
+      background: var(--gold);
+      color: #101820;
+      text-decoration: none;
+      padding: 12px 18px;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.03em;
+    }
+    .btn.ghost {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--line);
+    }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .meta span, .chip {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 7px 11px;
+      font-size: 12px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    section { margin-top: 72px; }
+    h2 {
+      font-family: "IBM Plex Serif", Georgia, serif;
+      font-size: 22px;
+      color: var(--gold);
+      margin: 0 0 12px;
+      font-weight: 500;
+    }
+    h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    p { color: var(--muted); max-width: 68ch; }
+    .note {
+      border-left: 2px solid var(--gold);
+      padding: 12px 16px;
+      background: var(--panel);
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 70ch;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      margin-top: 22px;
+    }
+    .grid article {
+      background: var(--panel);
+      padding: 22px;
+      color: var(--muted);
+      font-size: 14.5px;
+    }
+    .grid .tag {
+      display: block;
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .price {
+      display: block;
+      margin: 0 0 10px;
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+    .data {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .data div {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 16px;
+    }
+    .data dt {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .data dd {
+      margin: 0;
+      color: var(--ink);
+      font-weight: 600;
+      font-size: 14px;
+    }
+    ul.clean {
+      margin: 12px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    ul.clean li { margin-bottom: 6px; }
+    address { font-style: normal; color: var(--ink); line-height: 1.85; }
+    address a { text-decoration: none; }
+    footer {
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 22px 24px 36px;
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+    footer a { color: var(--gold); text-decoration: none; text-transform: uppercase; }
+    @media (max-width: 560px) {
+      nav a { margin-left: 10px; }
+      h1 { max-width: none; }
+    }
+
+    nav a[aria-current="page"] { color: var(--ink); }
+    .crumb {
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin: 0 0 18px;
+    }
+    .crumb a { text-decoration: none; }
+    .roles {
+      list-style: none;
+      margin: 8px 0 0;
+      padding: 0;
+      display: grid;
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+    .roles a {
+      display: block;
+      background: var(--panel);
+      color: var(--ink);
+      text-decoration: none;
+      padding: 18px 22px;
+      font-weight: 600;
+    }
+    .roles a:hover { color: var(--gold); }
+    .job h1 { max-width: none; }
+    .job section { margin-top: 40px; }
+    .data .wide { grid-column: 1 / -1; }
+    .data a { text-decoration: none; }
+    .payline { color: var(--ink); font-weight: 600; }
+
+  </style>
+</head>
+<body>
+  <div class="strip">
+    <div class="strip-inner">
+      <span><strong>NAICS</strong> 541512 · 541511 · 541519 · 541611 · 541690</span>
+      <span><strong>Size</strong> Minority-owned small business</span>
+      <span><strong>Location</strong> Henderson, NV</span>
+      <span><strong>SAM</strong> Registered · Active</span>
+    </div>
+  </div>
+
+  <header>
+    <a class="mark" href="/">Atlantic Meridian</a>
+    <nav>
+      <a href="/#services">Services</a>
+      <a href="/#packages">Packages</a>
+      <a href="/about/" aria-current="page">About</a>
+      <a href="/#leadership">Team</a>
+      <a href="/#company">Company</a>
+      <a href="/#capability">Capability</a>
+      <a href="/careers/">Careers</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <p class="crumb"><a href="/">Atlantic Meridian LLC</a> / About</p>
+    <div class="rule"></div>
+    <h1>About</h1>
+    <p class="lede">Atlantic Meridian LLC is a minority-owned Henderson, Nevada small business. We help federal agencies, state and local governments, nonprofits, healthcare and education organizations, and commercial companies assess risk, meet compliance requirements, and strengthen security. Work is principal-led, scoped in writing, and available directly or as a subcontractor to primes.</p>
+
+    <section>
+      <h2>What we do</h2>
+      <p>Every engagement has defined deliverables in writing. Assessments are usually fixed fee. Longer authorization, compliance, or operations work can be scoped as fixed price or time and materials.</p>
+      <p>We support RMF and ATO work, NIST CSF 2.0, HIPAA, SOC 2, and CMMC readiness, plus IAM, PAM, cloud security, and AI governance aligned to the NIST AI RMF.</p>
+    </section>
+
+    <section>
+      <h2>Leadership</h2>
+      <h3>Derick Osei, Founder and Managing Member</h3>
+      <p>Derick has more than 12 years of cybersecurity and IT experience, working in the field since 2013. In prior roles, his individual experience includes RMF/ATO and compliance support for federal programs and security operations work. He leads every Atlantic Meridian engagement.</p>
+      <h3 style="margin-top:24px">Dr. Albert Ofori, co-owner</h3>
+      <p>Dr. Albert Ofori is a co-owner of Atlantic Meridian LLC.</p>
+      <p>Our leaders and consulting bench bring 65+ years combined experience.</p>
+      <p>Our bench of vetted consultants holds industry certifications including CISSP, and every person assigned will hold the certifications each task requires.</p>
+    </section>
+
+    <section>
+      <h2>Company record</h2>
+      <div class="note">Atlantic Meridian LLC was formed in August 2026 and has not yet completed contracts under its own name. We are upfront about that.</div>
+      <p>Proposals describe Derick's individual experience from prior roles, labeled as individual experience and not as company past performance. When a bid calls for more capacity or company references, we team with established firms and cite their references only with their written permission.</p>
+      <div class="data">
+        <div><dt>Legal name</dt><dd>Atlantic Meridian LLC</dd></div>
+        <div><dt>Location</dt><dd>Henderson, Nevada</dd></div>
+        <div><dt>Business size</dt><dd>Minority-owned small business</dd></div>
+        <div><dt>UEI</dt><dd>KA32TSXE4XK7</dd></div>
+        <div><dt>CAGE</dt><dd>25VQ8</dd></div>
+        <div><dt>SAM status</dt><dd>Active (renews Sep 25, 2027)</dd></div>
+      </div>
+      <div class="actions" style="margin-top:22px">
+        <a class="btn" href="/contact/">Contact</a>
+        <a class="btn ghost" href="/capability-statement.pdf">Capability statement</a>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <span>ATLANTIC MERIDIAN LLC · HENDERSON, NEVADA · MINORITY-OWNED SMALL BUSINESS</span>
+    <span>Cybersecurity &amp; compliance consulting for government, nonprofit, and commercial organizations</span>
+    <span><a href="/about/">About</a> · <a href="/contact/">Contact</a> · <a href="/careers/">Careers</a></span>
+  </footer>
+
+</body>
+</html>
