@@ -4,8 +4,20 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact | Atlantic Meridian</title>
-  <meta name="description" content="Contact Atlantic Meridian LLC in Henderson, Nevada. Mailing address 1887 Whitney Mesa Dr #3978, Henderson, NV 89014. Phone 702-899-9387. Email derick@atlanticmeridianco.com." />
+  <meta name="description" content="Contact Atlantic Meridian LLC in Henderson, Nevada. Mailing address 1887 Whitney Mesa Dr #3978, Henderson, NV 89014. Phone 702-899-9387. Email info@atlanticmeridianco.com." />
   <meta name="theme-color" content="#0e1621" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta property="og:title" content="Contact | Atlantic Meridian" />
+  <meta property="og:description" content="Contact Atlantic Meridian LLC in Henderson, Nevada. Mailing address 1887 Whitney Mesa Dr #3978, Henderson, NV 89014. Phone 702-899-9387. Email info@atlanticmeridianco.com." />
+  <meta property="og:url" content="https://atlanticmeridianco.com/contact/" />
+  <meta property="og:image" content="https://atlanticmeridianco.com/images/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://atlanticmeridianco.com/images/og-image.png" />
   <link rel="canonical" href="https://atlanticmeridianco.com/contact/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -59,12 +71,15 @@
       flex-wrap: wrap;
     }
     .mark {
-      font-family: "IBM Plex Serif", Georgia, serif;
-      font-size: 17px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--gold);
+      display: inline-flex;
+      align-items: center;
+      line-height: 0;
       text-decoration: none;
+    }
+    .mark img {
+      height: 56px;
+      width: auto;
+      display: block;
     }
     nav a {
       color: var(--muted);
@@ -225,6 +240,7 @@
     @media (max-width: 560px) {
       nav a { margin-left: 10px; }
       h1 { max-width: none; }
+      .mark img { height: 44px; }
     }
 
     nav a[aria-current="page"] { color: var(--ink); }
@@ -273,7 +289,7 @@
   </div>
 
   <header>
-    <a class="mark" href="/">Atlantic Meridian</a>
+    <a class="mark" href="/"><img src="/images/logo-header.png" width="807" height="184" alt="Atlantic Meridian" /></a>
     <nav>
       <a href="/#services">Services</a>
       <a href="/#packages">Packages</a>
@@ -296,14 +312,14 @@
       Mailing address: 1887 Whitney Mesa Dr #3978<br />
       Henderson, NV 89014<br />
       <a href="tel:+17028999387">702-899-9387</a><br />
-      <a href="mailto:derick@atlanticmeridianco.com">derick@atlanticmeridianco.com</a>
+      <a href="mailto:info@atlanticmeridianco.com">info@atlanticmeridianco.com</a>
     </address>
     <div class="data">
       <div><dt>UEI</dt><dd>KA32TSXE4XK7</dd></div>
       <div><dt>CAGE</dt><dd>25VQ8</dd></div>
     </div>
     <div class="actions" style="margin-top:22px">
-      <a class="btn" href="mailto:derick@atlanticmeridianco.com">Email</a>
+      <a class="btn" href="mailto:info@atlanticmeridianco.com">Email</a>
       <a class="btn ghost" href="tel:+17028999387">702-899-9387</a>
     </div>
   </main>
