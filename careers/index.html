@@ -6,6 +6,18 @@
   <title>Careers | Atlantic Meridian Careers</title>
   <meta name="description" content="Careers at Atlantic Meridian LLC. Full-time (W-2) or independent contractor (1099) roles, each contingent on contract award." />
   <meta name="theme-color" content="#0e1621" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta property="og:title" content="Careers | Atlantic Meridian Careers" />
+  <meta property="og:description" content="Careers at Atlantic Meridian LLC. Full-time (W-2) or independent contractor (1099) roles, each contingent on contract award." />
+  <meta property="og:url" content="https://atlanticmeridianco.com/careers/" />
+  <meta property="og:image" content="https://atlanticmeridianco.com/images/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://atlanticmeridianco.com/images/og-image.png" />
   <link rel="canonical" href="https://atlanticmeridianco.com/careers/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -59,12 +71,15 @@
       flex-wrap: wrap;
     }
     .mark {
-      font-family: "IBM Plex Serif", Georgia, serif;
-      font-size: 17px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--gold);
+      display: inline-flex;
+      align-items: center;
+      line-height: 0;
       text-decoration: none;
+    }
+    .mark img {
+      height: 56px;
+      width: auto;
+      display: block;
     }
     nav a {
       color: var(--muted);
@@ -225,6 +240,7 @@
     @media (max-width: 560px) {
       nav a { margin-left: 10px; }
       h1 { max-width: none; }
+      .mark img { height: 44px; }
     }
 
     nav a[aria-current="page"] { color: var(--ink); }
@@ -246,12 +262,23 @@
       border: 1px solid var(--line);
     }
     .roles a {
-      display: block;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      flex-wrap: wrap;
       background: var(--panel);
       color: var(--ink);
       text-decoration: none;
       padding: 18px 22px;
       font-weight: 600;
+    }
+    .roles .where {
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
     .roles a:hover { color: var(--gold); }
     .job h1 { max-width: none; }
@@ -273,7 +300,7 @@
   </div>
 
   <header>
-    <a class="mark" href="/">Atlantic Meridian</a>
+    <a class="mark" href="/"><img src="/images/logo-header.png" width="807" height="184" alt="Atlantic Meridian" /></a>
     <nav>
       <a href="/#services">Services</a>
       <a href="/#packages">Packages</a>
@@ -291,14 +318,15 @@
     <div class="rule"></div>
     <h1>Careers</h1>
     <p class="lede">Atlantic Meridian LLC is building a bench of qualified professionals to name in proposals for upcoming bids. Each role is offered as full-time (W-2) or independent contractor (1099) and is contingent on contract award.</p>
+    <p>To apply, email <a href="mailto:info@atlanticmeridianco.com">info@atlanticmeridianco.com</a> with the role title in the subject line, in the form Application: Penetration Tester.</p>
     <ul class="roles">
-      <li><a href="/careers/ai-governance-ai-engineer.html">AI Governance / AI Engineer (Contingent on Contract Award)</a></li>
-      <li><a href="/careers/grc-compliance-consultant.html">GRC / Compliance Consultant (Contingent on Contract Award)</a></li>
-      <li><a href="/careers/help-desk-it-support.html">Help Desk / IT Support Specialist (Contingent on Contract Award)</a></li>
-      <li><a href="/careers/local-onsite-technician.html">Local On-Site Technician (Contingent on Contract Award)</a></li>
-      <li><a href="/careers/penetration-tester.html">Penetration Tester (Contingent on Contract Award)</a></li>
-      <li><a href="/careers/security-engineer.html">Security Engineer (Contingent on Contract Award)</a></li>
-      <li><a href="/careers/soc-cyber-analyst.html">SOC / Cyber Analyst (Contingent on Contract Award)</a></li>
+      <li><a href="/careers/penetration-tester.html">Penetration Tester <span class="where">Remote (US)</span></a></li>
+      <li><a href="/careers/soc-cyber-analyst.html">SOC Analyst <span class="where">Remote (US)</span></a></li>
+      <li><a href="/careers/security-engineer.html">Security Engineer <span class="where">Remote (US)</span></a></li>
+      <li><a href="/careers/grc-compliance-consultant.html">GRC Analyst <span class="where">Remote (US)</span></a></li>
+      <li><a href="/careers/ai-governance-ai-engineer.html">AI Security Engineer <span class="where">Remote (US)</span></a></li>
+      <li><a href="/careers/help-desk-it-support.html">Help Desk Technician <span class="where">Remote (US) or Henderson, NV</span></a></li>
+      <li><a href="/careers/local-onsite-technician.html">On-Site Technician <span class="where">Henderson, NV</span></a></li>
     </ul>
   </main>
   <footer>
