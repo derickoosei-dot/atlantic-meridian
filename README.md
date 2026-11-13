@@ -8,4 +8,4 @@ The repository root is the Pages site:
 - `capability-statement.pdf` — one-page capability statement at `/capability-statement.pdf`
 - `CNAME` — `atlanticmeridianco.com`
 
-Public contact is company-only: Atlantic Meridian LLC, info@atlanticmeridianco.com, 702-899-9387, 3753 Howard Hughes Parkway, Suite 200, Las Vegas, NV 89169. The site does not publish personal certifications, and it does not claim a contract vehicle or 8(a) status. SAM.gov registration is active (renews Sep 25, 2027). LLC past performance is not listed because none exists yet.
+Public contact is company-only: Atlantic Meridian LLC, info@atlanticmeridianco.com, 702-381-2129, 1887 Whitney Mesa Dr #3978, Henderson, NV 89014. The site does not publish personal certifications, and it does not claim a contract vehicle or 8(a) status. SAM.gov registration is active (renews Sep 25, 2027). LLC past performance is not listed because none exists yet.
