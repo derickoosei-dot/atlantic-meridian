@@ -88,3 +88,5 @@ main:has(#s-question[data-active]) { max-width: 1000px; }
   .q-text { font-size: 18px; } .clock { font-size: 42px; }
   .logo { height: 34px; } .top-tag { display: none; }
 }
+.q-loading { margin: 6px 0 4px; padding: 10px; border-radius: 8px; background: #f3f6fa; color: var(--muted); font-size: 13.5px; }
+.q-text:empty::before { content: "…"; color: var(--muted); }

@@ -8,7 +8,7 @@
   var $ = function (s) { return document.querySelector(s); };
   var S = {
     token: readToken(), sid: null, info: null, stream: null, recorder: null, chunks: [], mime: '',
-    index: -1, total: 0, think: 30, answer: 150, phase: 'idle', phaseEnd: 0, phaseLen: 0, tick: null,
+    index: -1, total: 0, answer: 150, overtime: 30, phase: 'idle', phaseEnd: 0, phaseLen: 0, tick: null,
     recStart: 0, camOk: false, picOk: false, micOk: false, audioCtx: null, pendingBlob: null, doneArmed: 0,
   };
 
@@ -35,7 +35,7 @@
     if (s < 60) return s + ' seconds';
     var m = s / 60; return (m % 1 === 0 ? m : m.toFixed(1)) + (m === 1 ? ' minute' : ' minutes');
   }
-  function interviewing() { return ['between', 'think', 'answer', 'saving'].indexOf(S.phase) !== -1; }
+  function interviewing() { return ['question', 'answer', 'overtime', 'saving'].indexOf(S.phase) !== -1; }
 
   function api(action, payload) {
     var body = Object.assign({ action: action, token: S.token, sid: S.sid }, payload || {});
@@ -78,7 +78,8 @@
   }
   function stopEverything() {
     clearInterval(S.tick);
-    try { if (S.recorder && S.recorder.state !== 'inactive') { S.recorder.onstop = null; S.recorder.stop(); } } catch (e) {}
+    try { sttStop(); } catch (e) {}
+    try { if (S.seg && S.seg.rec.state !== 'inactive') { S.seg.rec.onstop = null; S.seg.rec.stop(); } } catch (e) {}
     if (S.stream) S.stream.getTracks().forEach(function (t) { t.onended = null; t.stop(); });
     if (S.audioCtx) { try { S.audioCtx.close(); } catch (e) {} }
   }
@@ -96,17 +97,15 @@
     api('hello').then(function (r) {
       if (!r.ok) return fatal(r.code);
       if (r.state !== 'ready' && r.state !== 'resume') return fatal(r.state);
-      S.info = r; S.total = r.total; S.think = r.think; S.answer = r.answer;
+      S.info = r; S.total = r.total; S.answer = r.answer; S.overtime = r.overtime || 30;
       $('#w-role').textContent = r.roleTitle;
       $('#w-name').textContent = r.firstName;
       $('#w-total').textContent = r.total;
-      $('#w-think').textContent = fmtSecs(r.think);
       $('#w-answer').textContent = fmtSecs(r.answer);
-      var mins = Math.ceil(r.total * (r.think + r.answer + 20) / 60 / 5) * 5;
+      var mins = Math.ceil(r.total * (r.answer + 20) / 60 / 5) * 5;
       $('#w-length').textContent = mins + ' min';
       $('#w-length2').textContent = 'about ' + mins + ' minutes';
       $('#w-deadline').textContent = r.deadline ? 'Please complete it by ' + r.deadline + '.' : '';
-      document.querySelectorAll('.b-think').forEach(function (e) { e.textContent = human(r.think); });
       document.querySelectorAll('.b-answer').forEach(function (e) { e.textContent = human(r.answer); });
       if (r.state === 'resume') {
         $('#w-resume').hidden = false;
@@ -144,7 +143,7 @@
         throw Object.assign(new Error('noaudio'), { name: 'NoAudio' });
       }
       S.stream = stream;
-      ['#preview', '#preview-mini', '#preview-q'].forEach(function (s) { $(s).srcObject = stream; });
+      ['#preview', '#preview-q'].forEach(function (s) { $(s).srcObject = stream; });
       $('#preview-empty').hidden = true;
       S.camOk = true;
       setRow('#ck-cam', 'ok', v.label ? 'Connected: ' + v.label : 'Connected');
@@ -208,93 +207,188 @@
   }
 
   // ---------------------------------------------------------- interview --
+  // Continuous recording: one MediaRecorder segment per question, started BEFORE
+  // the previous one stops (a few hundred ms of overlap, never a gap). Segment k
+  // runs from the click that leads to question k until the click that leaves it.
   function pickMime() {
     var c = ['video/webm;codecs=vp8,opus', 'video/webm;codecs=vp9,opus', 'video/webm', 'video/mp4;codecs=avc1,mp4a.40.2', 'video/mp4'];
     for (var i = 0; i < c.length; i++) if (MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported(c[i])) return c[i];
     return '';
   }
+  function startSegment(index) {
+    var seg = { index: index, chunks: [], startedAt: Date.now(), shownAt: null, endedAt: null };
+    var opts = { videoBitsPerSecond: 450000, audioBitsPerSecond: 64000 };
+    if (S.mime) opts.mimeType = S.mime;
+    seg.rec = new MediaRecorder(S.stream, opts);
+    seg.rec.ondataavailable = function (e) { if (e.data && e.data.size) seg.chunks.push(e.data); };
+    seg.rec.start(1000);
+    return seg;
+  }
+  function cutSegment(seg) {
+    return new Promise(function (resolve) {
+      var rec = seg.rec;
+      rec.onstop = function () {
+        seg.endedAt = Date.now();
+        resolve(new Blob(seg.chunks, { type: (rec.mimeType || S.mime || 'video/webm').split(';')[0] }));
+      };
+      try { rec.requestData(); } catch (e) {}
+      try { rec.stop(); } catch (e) { resolve(new Blob(seg.chunks, { type: 'video/webm' })); }
+    });
+  }
+
+  // ---- free in-browser transcript (Web Speech API; Chrome/Edge/Safari) ----
+  var STT = { on: false, status: 'unsupported', results: [], starts: {}, gen: 0, inst: null };
+  function sttStart() {
+    var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) { STT.status = 'unsupported'; return; }
+    STT.on = true; STT.status = 'ok';
+    (function make() {
+      var gen = ++STT.gen, r;
+      try { r = new SR(); } catch (e) { STT.status = 'error'; return; }
+      r.continuous = true; r.interimResults = true; r.lang = 'en-US';
+      r.onresult = function (e) {
+        for (var i = e.resultIndex; i < e.results.length; i++) {
+          var key = gen + ':' + i;
+          if (!(key in STT.starts)) STT.starts[key] = Date.now(); // when the phrase began
+          if (e.results[i].isFinal) {
+            var t = String(e.results[i][0].transcript || '').trim();
+            if (t && !STT.starts[key + 'done']) { STT.starts[key + 'done'] = 1; STT.results.push({ at: STT.starts[key], text: t }); }
+          }
+        }
+      };
+      r.onerror = function (e) {
+        if (e.error === 'no-speech' || e.error === 'aborted') return;
+        if (e.error === 'not-allowed' || e.error === 'service-not-allowed') { STT.on = false; STT.status = 'blocked'; }
+        else STT.status = 'partial:' + e.error;
+        beacon('stt_error', e.error);
+      };
+      r.onend = function () { if (STT.on) setTimeout(function () { if (STT.on) make(); }, 250); };
+      try { r.start(); STT.inst = r; } catch (e) { STT.status = 'error'; }
+    })();
+  }
+  function sttStop() { STT.on = false; try { if (STT.inst) STT.inst.stop(); } catch (e) {} }
+  function transcriptFor(seg) {
+    var end = seg.cutAt || seg.endedAt || Date.now();
+    return STT.results.filter(function (r) { return r.at >= (seg.fromAt || seg.startedAt) && r.at < end; })
+      .map(function (r) { return { t: Math.max(0, (r.at - seg.startedAt) / 1000), text: r.text }; });
+  }
+
   function begin() {
     $('#btn-begin').disabled = true;
     S.mime = pickMime();
+    // Recording and transcription start on the click, before any question is shown.
+    S.seg = startSegment(-1);
+    sttStart();
     var v = S.stream.getVideoTracks()[0].getSettings ? S.stream.getVideoTracks()[0].getSettings() : {};
-    api('begin', { consent: true, client: { ua: navigator.userAgent.slice(0, 160), mime: S.mime, w: v.width, h: v.height } })
+    api('begin', { consent: true, client: { ua: navigator.userAgent.slice(0, 160), mime: S.mime, w: v.width, h: v.height, stt: STT.status } })
       .then(function (r) {
         if (!r.ok) return fatal(r.code);
         S.sid = r.sid; S.total = r.total;
-        S.phase = 'between';
+        S.legacy = !(S.info && S.info.version); // v1 backend: upload must finish before the next reveal
+        S.phase = 'question';
         lockNavigation();
-        if (r.nextIndex >= r.total) return finish();
-        between(r.nextIndex, false);
-      }).catch(function () { $('#btn-begin').disabled = false; toast('Connection problem. Please try again.'); });
+        $('#q-text').textContent = '';
+        $('#q-progress').textContent = 'Starting…';
+        show('s-question');
+        if (r.nextIndex >= r.total) return finishFlow();
+        S.seg.index = r.nextIndex;
+        reveal();
+      }).catch(function () {
+        cutSegment(S.seg); sttStop(); S.seg = null;
+        $('#btn-begin').disabled = false; toast('Connection problem. Please try again.');
+      });
   }
-  function between(nextIdx, justSaved) {
-    S.phase = 'between';
-    $('#b-progress').textContent = 'Question ' + (nextIdx + 1) + ' of ' + S.total;
-    $('#b-title').textContent = justSaved ? 'Answer saved. Ready for question ' + (nextIdx + 1) + '?' : 'Ready for question ' + (nextIdx + 1) + '?';
-    $('#btn-next').textContent = 'Show question ' + (nextIdx + 1);
-    $('#btn-next').disabled = false;
-    show('s-between');
+  function setLoading(on, msg) {
+    $('#q-loading').hidden = !on;
+    if (msg) $('#q-loading').textContent = msg;
+    $('#btn-next').disabled = on;
   }
   function reveal() {
-    $('#btn-next').disabled = true;
+    setLoading(true, 'Loading the next question… you are still on camera.');
     api('reveal').then(function (r) {
       if (!r.ok) {
-        if (r.code === 'answer_pending') { $('#btn-next').disabled = false; return toast('Still saving your last answer. Try again in a moment.'); }
+        if (r.code === 'answer_pending') return setTimeout(reveal, 1500); // v1 backend still saving
         return fatal(r.code);
       }
-      if (r.done) return finish();
-      S.index = r.index; S.total = r.total; S.think = r.think; S.answer = r.answer;
+      if (r.done) return finishFlow();
+      S.index = r.index; S.total = r.total; S.answer = r.answer; S.overtime = r.overtime || 30;
+      S.seg.index = r.index;
+      S.seg.shownAt = Date.now();
       $('#q-progress').textContent = 'Question ' + (r.index + 1) + ' of ' + r.total;
       $('#q-text').textContent = r.text;
-      $('#cam-lost').hidden = !(S.stream.getVideoTracks()[0].readyState !== 'live');
-      startRecorder();
-      show('s-question');
-      phase('think', r.think);
-    }).catch(function () { $('#btn-next').disabled = false; toast('Connection problem. Please try again.'); });
-  }
-  function startRecorder() {
-    S.chunks = [];
-    var opts = { videoBitsPerSecond: 450000, audioBitsPerSecond: 64000 };
-    if (S.mime) opts.mimeType = S.mime;
-    S.recorder = new MediaRecorder(S.stream, opts);
-    S.recorder.ondataavailable = function (e) { if (e.data && e.data.size) S.chunks.push(e.data); };
-    S.recorder.start(1000);
-    S.recStart = Date.now();
+      $('#btn-next').textContent = r.index + 1 >= r.total ? 'Finish interview' : 'Next question';
+      setLoading(false);
+      phase('answer', S.answer);
+    }).catch(function () { setTimeout(reveal, 2000); });
   }
   function phase(name, secs) {
     S.phase = name; S.phaseLen = secs * 1000; S.phaseEnd = Date.now() + S.phaseLen;
     var label = $('#phase-label');
-    label.textContent = name === 'think' ? 'Think' : 'Answer now';
-    label.className = 'phase' + (name === 'answer' ? ' answer' : '');
-    $('#phase-help').textContent = name === 'think'
-      ? 'Recording has started. The answer timer begins automatically when this ends.'
-      : 'Answer out loud to the camera. Recording stops automatically when time is up.';
-    $('#btn-start-now').hidden = name !== 'think';
-    $('#btn-done').hidden = name !== 'answer';
-    $('#btn-done').textContent = 'Finish answer'; S.doneArmed = 0;
+    label.textContent = name === 'answer' ? 'Answer now' : 'Time is up';
+    label.className = 'phase' + (name === 'overtime' ? ' answer' : '');
+    var last = S.index + 1 >= S.total;
+    $('#phase-help').textContent = name === 'answer'
+      ? 'You are recording. Think out loud and answer now. Click ' + (last ? 'Finish interview' : 'Next question') + ' when you are done.'
+      : (last ? 'The interview will finish automatically.' : 'The next question will appear automatically.') + ' You are still recording.';
+    S.doneArmed = 0;
+    $('#btn-next').textContent = last ? 'Finish interview' : 'Next question';
     clearInterval(S.tick);
     var step = function () {
       var left = (S.phaseEnd - Date.now()) / 1000;
       $('#clock').textContent = fmtSecs(left);
       $('#bar').style.width = Math.max(0, Math.min(100, (S.phaseEnd - Date.now()) / S.phaseLen * 100)) + '%';
-      if (left <= 0) { clearInterval(S.tick); if (S.phase === 'think') phase('answer', S.answer); else if (S.phase === 'answer') endAnswer(); }
+      if (left <= 0) {
+        clearInterval(S.tick);
+        if (S.phase === 'answer') { beacon('time_up'); phase('overtime', S.overtime); }
+        else if (S.phase === 'overtime') goNext();
+      }
     };
     step(); S.tick = setInterval(step, 250);
   }
-  function endAnswer() {
-    if (S.phase !== 'answer' && S.phase !== 'think') return;
+  function goNext() {
+    if (S.phase !== 'answer' && S.phase !== 'overtime') return;
     clearInterval(S.tick);
-    S.phase = 'saving';
-    $('#saving-msg').textContent = 'Please keep this page open.';
-    show('s-saving');
-    var rec = S.recorder;
-    rec.onstop = function () {
-      var blob = new Blob(S.chunks, { type: (rec.mimeType || S.mime || 'video/webm').split(';')[0] });
-      S.pendingBlob = { blob: blob, index: S.index, durationMs: Date.now() - S.recStart };
-      upload(0);
-    };
-    try { rec.requestData(); } catch (e) {}
-    rec.stop();
+    if (S.index + 1 >= S.total) return finishFlow();
+    S.phase = 'question';
+    var old = S.seg;
+    S.seg = startSegment(old.index + 1); // new segment first: no off-camera gap
+    old.cutAt = S.seg.startedAt;         // transcript boundary (the video overlaps by ~0.3 s)
+    $('#q-text').textContent = '';
+    $('#q-progress').textContent = 'Question ' + (old.index + 2) + ' of ' + S.total;
+    var saved = new Promise(function (res) { setTimeout(function () { cutSegment(old).then(res); }, 300); })
+      .then(function (blob) { return queueUpload(old, blob, S.legacy ? 1500 : 2500); });
+    if (S.legacy) { setLoading(true, 'Saving your answer… you are still on camera.'); saved.then(reveal); }
+    else reveal();
+  }
+  S.uploads = [];
+  function queueUpload(seg, blob, sttGraceMs) {
+    var p = new Promise(function (res) { setTimeout(res, sttGraceMs); }).then(function () {
+      return uploadSeg(seg, blob, transcriptFor(seg), 0);
+    });
+    S.uploads.push(p);
+    return p;
+  }
+  function uploadSeg(seg, blob, transcript, attempt) {
+    return toB64(blob).then(function (b64) {
+      return api('upload', {
+        index: seg.index, mime: blob.type, data: b64, durationMs: (seg.endedAt || Date.now()) - seg.startedAt,
+        shownOffsetMs: seg.shownAt ? seg.shownAt - seg.startedAt : 0, transcript: transcript, sttStatus: STT.status,
+      });
+    }).then(function (r) {
+      $('#q-saving').hidden = true;
+      if (!r.ok) {
+        if (r.code === 'too_late' || r.code === 'wrong_question' || r.code === 'question_closed') {
+          toast('An earlier answer could not be saved in time.'); return;
+        }
+        fatal(r.code); throw new Error(r.code);
+      }
+    }, function () {
+      if (S.phase === 'stopped') return;
+      if (attempt === 0) beacon('upload_retry', 'Q' + (seg.index + 1));
+      $('#q-saving').hidden = false;
+      return new Promise(function (res) { setTimeout(res, Math.min(16000, 2000 * Math.pow(2, attempt))); })
+        .then(function () { return uploadSeg(seg, blob, transcript, attempt + 1); });
+    });
   }
   function toB64(blob) {
     return new Promise(function (res, rej) {
@@ -303,47 +397,27 @@
       fr.onerror = rej; fr.readAsDataURL(blob);
     });
   }
-  function upload(attempt) {
-    var p = S.pendingBlob;
-    toB64(p.blob).then(function (b64) {
-      return api('upload', { index: p.index, mime: p.blob.type, data: b64, durationMs: p.durationMs });
-    }).then(function (r) {
-      if (!r.ok) {
-        if (r.code === 'too_late' || r.code === 'wrong_question' || r.code === 'question_closed') {
-          toast('That answer could not be saved in time. Continuing to the next question.');
-          return afterSaved();
-        }
-        return fatal(r.code);
-      }
-      afterSaved();
-    }).catch(function () {
-      if (attempt < 4) {
-        beacon('upload_retry', 'attempt ' + (attempt + 1));
-        $('#saving-msg').textContent = 'Connection is slow. Retrying… (keep this page open)';
-        return setTimeout(function () { upload(attempt + 1); }, 2000 * Math.pow(2, attempt));
-      }
-      $('#saving-msg').textContent = 'We could not save this answer. Check your connection; we will keep trying.';
-      setTimeout(function () { upload(attempt); }, 8000);
-    });
-  }
-  function afterSaved() {
-    S.pendingBlob = null;
-    if (S.index + 1 >= S.total) return finish();
-    between(S.index + 1, true);
-  }
-  function finish() {
+  function finishFlow() {
+    clearInterval(S.tick);
     S.phase = 'saving';
-    $('#saving-msg').textContent = 'Submitting your interview…';
+    $('#saving-msg').textContent = 'Saving your last answer and submitting your interview. Please keep this page open.';
     show('s-saving');
-    api('finish').then(function (r) {
-      if (!r.ok) return fatal(r.code);
-      S.phase = 'done';
-      stopEverything();
-      $('#d-name').textContent = (S.info && S.info.firstName) || '';
-      show('s-done');
-    }).catch(function () { setTimeout(finish, 3000); });
+    var last = S.seg; S.seg = null;
+    var lastUp = last && last.shownAt ? cutSegment(last).then(function (blob) {
+      return new Promise(function (r) { setTimeout(r, 1500); }).then(function () { sttStop(); return queueUpload(last, blob, 0); });
+    }) : (last ? cutSegment(last) : Promise.resolve());
+    lastUp.then(function () { return Promise.all(S.uploads.map(function (p) { return p.catch(function () {}); })); })
+      .then(function finish() {
+        if (S.phase === 'stopped') return;
+        return api('finish').then(function (r) {
+          if (!r.ok) return fatal(r.code);
+          S.phase = 'done';
+          stopEverything();
+          $('#d-name').textContent = (S.info && S.info.firstName) || '';
+          show('s-done');
+        }, function () { setTimeout(finish, 3000); });
+      });
   }
-
   // ------------------------------------------------ navigation & focus --
   function lockNavigation() {
     history.pushState({ am: 1 }, '', location.href);
@@ -368,14 +442,13 @@
   $('#btn-cam').addEventListener('click', startDevices);
   $('#consent').addEventListener('change', updateBegin);
   $('#btn-begin').addEventListener('click', begin);
-  $('#btn-next').addEventListener('click', reveal);
-  $('#btn-start-now').addEventListener('click', function () { if (S.phase === 'think') phase('answer', S.answer); });
-  $('#btn-done').addEventListener('click', function () {
-    if (S.phase !== 'answer') return;
-    if (Date.now() - S.doneArmed < 4000) return endAnswer();
+  $('#btn-next').addEventListener('click', function () {
+    if (S.phase !== 'answer' && S.phase !== 'overtime') return;
+    if (S.phase === 'overtime' || Date.now() - S.doneArmed < 4000) return goNext();
     S.doneArmed = Date.now();
-    $('#btn-done').textContent = 'Click again to finish (no retakes)';
-    setTimeout(function () { if (S.phase === 'answer') $('#btn-done').textContent = 'Finish answer'; }, 4000);
+    var last = S.index + 1 >= S.total;
+    $('#btn-next').textContent = last ? 'Click again to finish (no retakes)' : 'Click again to move on (no going back)';
+    setTimeout(function () { if (S.phase === 'answer') $('#btn-next').textContent = last ? 'Finish interview' : 'Next question'; }, 4000);
   });
   init();
 })();

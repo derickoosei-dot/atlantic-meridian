@@ -37,12 +37,12 @@
     <section class="screen card" id="s-welcome">
       <p class="eyebrow" id="w-role"></p>
       <h1>Welcome, <span id="w-name"></span></h1>
-      <p class="lead">This is a one-take, on-camera interview. Each question appears on screen one at a time, and you answer it on camera right away.</p>
+      <p class="lead">This is a one-take, on-camera interview. Recording starts when you click Start and runs until you finish. Each question appears on screen while you are recording, and you answer it right away.</p>
 
       <div class="facts">
         <div><strong id="w-total"></strong><span>questions</span></div>
-        <div><strong id="w-think"></strong><span>to think</span></div>
-        <div><strong id="w-answer"></strong><span>to answer, max</span></div>
+        <div><strong id="w-answer"></strong><span>per answer, max</span></div>
+        <div><strong>1 take</strong><span>no retakes</span></div>
         <div><strong id="w-length"></strong><span>about, in total</span></div>
       </div>
 
@@ -54,11 +54,12 @@
       <h2>How it works</h2>
       <ol class="rules">
         <li><b>Camera and microphone are required.</b> You can’t start without a working camera.</li>
-        <li>Recording starts automatically <b>the moment each question appears</b>, including the thinking time.</li>
-        <li>After the thinking time, the answer timer starts. You can finish early, but you can’t pause.</li>
-        <li><b>One attempt only.</b> There are no retakes, no re-recording, and no going back to an earlier question.</li>
+        <li>Recording starts <b>the moment you click Start</b> and runs continuously until you finish, including the moments between questions.</li>
+        <li>Each question appears on screen while you are already recording. There is no separate preparation time: <b>think out loud and answer right away.</b></li>
+        <li>Each answer has a timer. Click <b>Next question</b> when you are done. When time runs out, the next question appears automatically shortly after.</li>
+        <li><b>One attempt only.</b> There are no retakes, no pausing, no re-recording, and no going back to an earlier question.</li>
         <li>Refreshing, closing this page, or opening the link in another tab or device <b>ends the question that is on screen</b>. It cannot be retaken.</li>
-        <li>Please don’t switch tabs or windows during the interview. That activity is noted for the reviewer.</li>
+        <li>Your spoken answers are transcribed automatically to help the reviewer. Please don’t switch tabs or windows; that activity is noted.</li>
       </ol>
 
       <h2>Before you begin</h2>
@@ -94,21 +95,12 @@
 
       <label class="consent">
         <input type="checkbox" id="consent">
-        <span>I understand that my camera and microphone record from the moment each question appears, that I get one attempt at each question with no retakes, and that Atlantic Meridian will use these recordings only to evaluate my application.</span>
+        <span>I understand that my camera and microphone record continuously from when I click Start until I finish, that my answers are transcribed automatically, that I get one attempt at each question with no retakes, and that Atlantic Meridian will use these recordings and transcripts only to evaluate my application.</span>
       </label>
       <div class="actions">
-        <button class="btn btn-primary" id="btn-begin" disabled>Begin interview</button>
+        <button class="btn btn-primary" id="btn-begin" disabled>Start interview and recording</button>
       </div>
-      <p class="muted small center">Once you begin, you can’t restart.</p>
-    </section>
-
-    <!-- Between questions -->
-    <section class="screen card" id="s-between">
-      <p class="eyebrow" id="b-progress"></p>
-      <h1 id="b-title">Ready for question 1?</h1>
-      <p id="b-body">The question will appear on screen and recording will start right away. You’ll have <span class="b-think"></span> to think, then up to <span class="b-answer"></span> to answer.</p>
-      <div class="mini-preview"><video id="preview-mini" class="mirror" playsinline muted autoplay></video></div>
-      <div class="actions"><button class="btn btn-primary" id="btn-next">Show question 1</button></div>
+      <p class="muted small center">Recording starts as soon as you click. Once you start, you can’t restart.</p>
     </section>
 
     <!-- Question -->
@@ -124,12 +116,13 @@
           <div class="cam-lost" id="cam-lost" hidden>Camera disconnected. Reconnect it if you can and keep answering.</div>
         </div>
         <div class="timer-box">
-          <div class="phase" id="phase-label">Think</div>
-          <div class="clock" id="clock">0:30</div>
+          <div class="phase" id="phase-label">Answer now</div>
+          <div class="clock" id="clock">2:30</div>
           <div class="bar"><i id="bar"></i></div>
-          <p class="muted small" id="phase-help">Recording has started. Answering begins automatically when the timer ends.</p>
-          <button class="btn btn-primary" id="btn-start-now">Start answering now</button>
-          <button class="btn btn-ghost" id="btn-done" hidden>Finish answer</button>
+          <p class="muted small" id="phase-help">You are recording.</p>
+          <div class="q-loading" id="q-loading" hidden>Loading the next question… you are still on camera.</div>
+          <button class="btn btn-primary" id="btn-next">Next question</button>
+          <p class="muted small" id="q-saving" hidden>Saving an earlier answer… keep this page open.</p>
         </div>
       </div>
     </section>
