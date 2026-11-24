@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; media-src 'self' blob:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; base-uri 'none'; form-action 'none'">
+  <title>Atlantic Meridian · Recorded Interview</title>
+  <link rel="icon" href="assets/logo-mark.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <div class="top-inner">
+      <img class="logo" src="assets/logo-horizontal.png" alt="Atlantic Meridian">
+      <span class="top-tag">Recorded interview</span>
+    </div>
+  </header>
+
+  <main id="app">
+    <!-- Loading -->
+    <section class="screen card" id="s-loading" data-active>
+      <div class="spinner" aria-hidden="true"></div>
+      <p class="muted center" id="loading-msg">Loading your interview…</p>
+    </section>
+
+    <!-- Error / closed states -->
+    <section class="screen card" id="s-error">
+      <div class="badge badge-warn" id="err-badge">Unavailable</div>
+      <h1 id="err-title">This link isn’t available</h1>
+      <p id="err-body">Please check the link in your invitation email.</p>
+      <p class="muted small">Need help? Reply to your invitation email or write to <a class="contact" href="#"></a>.</p>
+    </section>
+
+    <!-- Welcome -->
+    <section class="screen card" id="s-welcome">
+      <p class="eyebrow" id="w-role"></p>
+      <h1>Welcome, <span id="w-name"></span></h1>
+      <p class="lead">This is a one-take, on-camera interview. Each question appears on screen one at a time, and you answer it on camera right away.</p>
+
+      <div class="facts">
+        <div><strong id="w-total"></strong><span>questions</span></div>
+        <div><strong id="w-think"></strong><span>to think</span></div>
+        <div><strong id="w-answer"></strong><span>to answer, max</span></div>
+        <div><strong id="w-length"></strong><span>about, in total</span></div>
+      </div>
+
+      <div class="resume-note" id="w-resume" hidden>
+        <strong>Your interview was interrupted.</strong>
+        <span id="w-resume-text"></span>
+      </div>
+
+      <h2>How it works</h2>
+      <ol class="rules">
+        <li><b>Camera and microphone are required.</b> You can’t start without a working camera.</li>
+        <li>Recording starts automatically <b>the moment each question appears</b>, including the thinking time.</li>
+        <li>After the thinking time, the answer timer starts. You can finish early, but you can’t pause.</li>
+        <li><b>One attempt only.</b> There are no retakes, no re-recording, and no going back to an earlier question.</li>
+        <li>Refreshing, closing this page, or opening the link in another tab or device <b>ends the question that is on screen</b>. It cannot be retaken.</li>
+        <li>Please don’t switch tabs or windows during the interview. That activity is noted for the reviewer.</li>
+      </ol>
+
+      <h2>Before you begin</h2>
+      <ul class="checklist">
+        <li>A quiet, well-lit place where your face is clearly visible</li>
+        <li>A computer or phone with a camera and microphone, on a stable connection</li>
+        <li>A current version of Chrome, Edge, Firefox, or Safari</li>
+        <li>Set aside <span id="w-length2"></span> without interruptions</li>
+      </ul>
+      <p class="muted small" id="w-deadline"></p>
+      <div class="actions"><button class="btn btn-primary" id="btn-to-check">Check my camera and microphone</button></div>
+    </section>
+
+    <!-- Device check -->
+    <section class="screen card" id="s-check">
+      <p class="eyebrow">Before you begin</p>
+      <h1>Camera and microphone check</h1>
+      <p>When your browser asks, choose <b>Allow</b> for both the camera and the microphone.</p>
+      <div class="check-grid">
+        <div class="preview-wrap">
+          <video id="preview" class="mirror" playsinline muted autoplay></video>
+          <div class="preview-empty" id="preview-empty">Camera is off</div>
+        </div>
+        <div class="check-list">
+          <div class="check-row" id="ck-cam"><span class="dot"></span><div><b>Camera</b><small>Waiting for permission</small></div></div>
+          <div class="check-row" id="ck-face"><span class="dot"></span><div><b>Picture</b><small>Make sure you are visible and well lit</small></div></div>
+          <div class="check-row" id="ck-mic"><span class="dot"></span><div><b>Microphone</b><small>Say a few words to test it</small></div>
+            <div class="meter"><i id="mic-level"></i></div></div>
+          <button class="btn btn-ghost" id="btn-cam">Turn on camera and microphone</button>
+        </div>
+      </div>
+      <div class="alert" id="check-alert" hidden></div>
+
+      <label class="consent">
+        <input type="checkbox" id="consent">
+        <span>I understand that my camera and microphone record from the moment each question appears, that I get one attempt at each question with no retakes, and that Atlantic Meridian will use these recordings only to evaluate my application.</span>
+      </label>
+      <div class="actions">
+        <button class="btn btn-primary" id="btn-begin" disabled>Begin interview</button>
+      </div>
+      <p class="muted small center">Once you begin, you can’t restart.</p>
+    </section>
+
+    <!-- Between questions -->
+    <section class="screen card" id="s-between">
+      <p class="eyebrow" id="b-progress"></p>
+      <h1 id="b-title">Ready for question 1?</h1>
+      <p id="b-body">The question will appear on screen and recording will start right away. You’ll have <span class="b-think"></span> to think, then up to <span class="b-answer"></span> to answer.</p>
+      <div class="mini-preview"><video id="preview-mini" class="mirror" playsinline muted autoplay></video></div>
+      <div class="actions"><button class="btn btn-primary" id="btn-next">Show question 1</button></div>
+    </section>
+
+    <!-- Question -->
+    <section class="screen card wide" id="s-question">
+      <div class="q-head">
+        <span class="eyebrow" id="q-progress"></span>
+        <span class="rec" id="rec-ind"><span class="rec-dot"></span>REC</span>
+      </div>
+      <p class="q-text" id="q-text"></p>
+      <div class="q-body">
+        <div class="preview-wrap small-wrap">
+          <video id="preview-q" class="mirror" playsinline muted autoplay></video>
+          <div class="cam-lost" id="cam-lost" hidden>Camera disconnected. Reconnect it if you can and keep answering.</div>
+        </div>
+        <div class="timer-box">
+          <div class="phase" id="phase-label">Think</div>
+          <div class="clock" id="clock">0:30</div>
+          <div class="bar"><i id="bar"></i></div>
+          <p class="muted small" id="phase-help">Recording has started. Answering begins automatically when the timer ends.</p>
+          <button class="btn btn-primary" id="btn-start-now">Start answering now</button>
+          <button class="btn btn-ghost" id="btn-done" hidden>Finish answer</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Uploading -->
+    <section class="screen card" id="s-saving">
+      <div class="spinner" aria-hidden="true"></div>
+      <h1 class="center">Saving your answer…</h1>
+      <p class="muted center" id="saving-msg">Please keep this page open.</p>
+    </section>
+
+    <!-- Done -->
+    <section class="screen card" id="s-done">
+      <div class="badge badge-ok">Complete</div>
+      <h1>Thank you, <span id="d-name"></span></h1>
+      <p>Your interview has been submitted. Derick Osei will review your recordings personally and follow up by email.</p>
+      <p>You can now close this page. Your camera has been turned off.</p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>Atlantic Meridian LLC</span><span class="sep">·</span><a href="https://atlanticmeridianco.com" target="_blank" rel="noopener">atlanticmeridianco.com</a>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
