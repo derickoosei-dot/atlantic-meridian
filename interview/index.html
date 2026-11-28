@@ -30,6 +30,8 @@
       <div class="badge badge-warn" id="err-badge">Unavailable</div>
       <h1 id="err-title">This link isn’t available</h1>
       <p id="err-body">Please check the link in your invitation email.</p>
+      <p class="muted small err-code" id="err-code" hidden></p>
+      <div class="actions"><button class="btn btn-ghost" id="err-copy" hidden>Copy interview link</button></div>
       <p class="muted small">Need help? Reply to your invitation email or write to <a class="contact" href="#"></a>.</p>
     </section>
 
@@ -54,6 +56,8 @@
       <h2>How it works</h2>
       <ol class="rules">
         <li><b>Camera and microphone are required.</b> You can’t start without a working camera.</li>
+        <li class="room-only"><b>Room check first (recorded).</b> Right after you click Start, you’ll slowly turn your camera around the whole room and your desk for about <span class="b-room">20 seconds</span>, to show there are no extra screens, notes, phones, or other people. Then the first question appears.</li>
+        <li><b>One screen only.</b> No second monitor, tablet, or phone in use, no notes, and no one else helping you. Keep your face in view the whole time.</li>
         <li>Recording starts <b>the moment you click Start</b> and runs continuously until you finish, including the moments between questions.</li>
         <li>Each question appears on screen while you are already recording. There is no separate preparation time: <b>think out loud and answer right away.</b></li>
         <li>Each answer has a timer. Click <b>Next question</b> when you are done. When time runs out, the next question appears automatically shortly after.</li>
@@ -64,9 +68,11 @@
 
       <h2>Before you begin</h2>
       <ul class="checklist">
-        <li>A quiet, well-lit place where your face is clearly visible</li>
+        <li>A quiet, well-lit place where your face is clearly visible, alone in the room</li>
+        <li>Only one screen: turn off or put away other monitors, tablets, and phones</li>
+        <li class="room-only">A camera you can turn or tilt (or a laptop/phone you can pick up) for the short room check</li>
         <li>A computer or phone with a camera and microphone, on a stable connection</li>
-        <li>A current version of Chrome, Edge, Firefox, or Safari</li>
+        <li>A current version of Chrome, Edge, Firefox, or Safari, opened directly (not inside the Mail, Gmail, LinkedIn, or Indeed app)</li>
         <li>Set aside <span id="w-length2"></span> without interruptions</li>
       </ul>
       <p class="muted small" id="w-deadline"></p>
@@ -95,7 +101,7 @@
 
       <label class="consent">
         <input type="checkbox" id="consent">
-        <span>I understand that my camera and microphone record continuously from when I click Start until I finish, that my answers are transcribed automatically, that I get one attempt at each question with no retakes, and that Atlantic Meridian will use these recordings and transcripts only to evaluate my application.</span>
+        <span>I understand that my camera and microphone record continuously from when I click Start until I finish, including a short recorded room check before the first question, that I will use only one screen with no notes or help, that my answers are transcribed automatically, that I get one attempt at each question with no retakes, and that Atlantic Meridian will use these recordings and transcripts only to evaluate my application.</span>
       </label>
       <div class="actions">
         <button class="btn btn-primary" id="btn-begin" disabled>Start interview and recording</button>
